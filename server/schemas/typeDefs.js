@@ -60,9 +60,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addFriend(friendId: ID!): User
-    addCategory(categoryId: ID!, title: String!, description: String!, username: String, movieCount: Int, movies: [ID]!): Category
-    addMovie(movieId: ID!, title: String!, year: Int!, image: String!, genre: String, tagline: String, imdbRating: Int, metaCriticRating: Int, plot: String!, actors: [ID]!, username: String): Movie
-    addActor(actorId: ID!, name: String!, image: String): Actor
+    addCategory(title: String!, description: String!): Category
+    addMovie(categoryId: ID!, title: String!, year: Int!, image: String!, plot: String!): Movie
+    addActor(movieId: ID!, name: String!): Actor
     removeFriend(FriendId: ID!): User
     removeCategory(categoryId: ID!): User
   }
