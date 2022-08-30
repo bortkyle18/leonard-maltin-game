@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Category = require('./Category');
+
 
 const userSchema = new Schema(
   {
@@ -20,6 +22,7 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    categories: [Category],
     friends: [
       {
         type: Schema.Types.ObjectId,

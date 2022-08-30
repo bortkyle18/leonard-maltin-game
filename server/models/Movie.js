@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose');
-const actorSchema = require('./Actor');
+const Actor = require('./Actor');
 
 
 const movieSchema = new Schema(
@@ -33,7 +33,7 @@ const movieSchema = new Schema(
       type: String,
       required: true
     },
-    year: [actorSchema],
+    year: [Actor],
     username: {
       type: String
     },
@@ -45,4 +45,7 @@ const movieSchema = new Schema(
   }
 );
 
-module.exports = movieSchema;
+
+const Movie = model('Movie', movieSchema);
+
+module.exports = Movie;

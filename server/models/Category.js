@@ -31,6 +31,7 @@ categorySchema.virtual('movieCount').get(function() {
   return this.movies.length;
 });
 
+
 const Category = model('Category', categorySchema);
 
 module.exports = Category;

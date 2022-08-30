@@ -18,13 +18,33 @@ const typeDefs = gql`
   }
 
   type Actor {
-    _id: ID
+    actorId: ID
     name: String
     image: String
   }
 
+  input ActorInput {
+    actorId: ID!
+    name: String!
+    image: String
+  }
+
   type Movie {
-    _id: ID
+    movieId: ID
+    title: String!
+    year: Int!
+    image: String!
+    genre: String
+    tagline: String
+    imdbRating: Int
+    metaCriticRating: Int
+    plot: String!
+    actors: [Actor]!
+    username: String
+  }
+
+  input MovieInput {
+    movieId: ID!
     title: String
     year: Int
     image: String
@@ -38,7 +58,7 @@ const typeDefs = gql`
   }
 
   type Category {
-    _id: ID
+    categoryId: ID
     title: String
     description: String
     username: String
@@ -46,19 +66,34 @@ const typeDefs = gql`
     movies: [Movie]
   }
 
+  input CategoryInput {
+    categoryId: ID!
+    title: String!
+    description: String!
+    username: String
+    movieCount: Int
+    movies: [Movie]!
+  }
+
   type Query {
     me: User
     users: [User]
     user(username: String!): User
     categories (username: String): [Category]
-    category(_id: ID!): Category
+    category(categoryId: ID!): Category
+    movies (username: String): [movie]
+    movie(movieId: ID!): movie
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addFriend(friendId: ID!): User
-    addCategory(title: String!, description: String!, movies: [Movie]!): Category
+    addCategory(categoryData: CategoryInput!): Category
+    addMovie(categoryId: ID!, movieData: MovieInput!): Movie
+    addActor(movieId: ID!, actorData: ActorInput!): Actor
+    removeFriend(FriendId: ID!): User
+    removeCategory(categoryId: ID!): User
   }
 `;
 

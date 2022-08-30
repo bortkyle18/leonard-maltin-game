@@ -18,4 +18,7 @@ const actorSchema = new Schema(
   }
 );
 
-module.exports = actorSchema;
+
+const Actor = model('Actor', actorSchema);
+
+module.exports = Actor;
