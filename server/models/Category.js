@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const movieSchema = require('./Movie');
 
 
 const categorySchema = new Schema(
@@ -18,7 +17,12 @@ const categorySchema = new Schema(
       type: String,
       required: true
     },
-    movies:  [movieSchema]
+    movies:  [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Movie'
+      }
+    ],
   },
   {
     toJSON: {

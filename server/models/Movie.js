@@ -1,5 +1,4 @@
-const { Schema } = require('mongoose');
-const Actor = require('./Actor');
+const { Schema, model } = require('mongoose');
 
 
 const movieSchema = new Schema(
@@ -33,7 +32,12 @@ const movieSchema = new Schema(
       type: String,
       required: true
     },
-    year: [Actor],
+    actors: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Actor'
+      }
+    ],
     username: {
       type: String
     },
