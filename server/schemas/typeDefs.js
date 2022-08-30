@@ -28,7 +28,7 @@ const typeDefs = gql`
     title: String
     year: Int
     image: String
-    genres: String
+    genre: String
     tagline: String
     imdbRating: Int
     metaCriticRating: Int
