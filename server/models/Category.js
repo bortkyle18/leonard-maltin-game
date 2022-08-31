@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const User = require('./User')
 
 
 const categorySchema = new Schema(
@@ -13,16 +14,14 @@ const categorySchema = new Schema(
       required: true,
       maxlength: 280
     },
-    username: {
+    userId: {
       type: String,
       required: true
     },
-    movies:  [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Movie'
-      }
-    ],
+    movies:  {
+      type: Array,
+      required: true
+    },
   },
   {
     toJSON: {

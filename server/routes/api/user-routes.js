@@ -17,7 +17,7 @@ router.route('/:userId').get(getUserById)
 router.route('/:userId').delete(deleteUser)
 
 
-//   /api/user/:userId/friends     =>   add/remove from user friends list
+//   /api/user/:userId/:friendId     =>   add/remove from user friends list
 router.route('/:userId/:friendId').put(addFriend)
 router.route('/:userId/:friendId').delete(removeFriend)
 
