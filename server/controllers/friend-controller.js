@@ -20,7 +20,7 @@ const addFriend = async ({params}, res) => {
 
 const removeFriend = async ({params}, res) => {
   try {
-    // find user and update friend array to uninclude removed friend
+    // find user and update friend array to uninclude friend
     const removeFriendQuery = await User.findOneAndUpdate(
       params.userId,
       { $pull: { friends: params.friendId } },
