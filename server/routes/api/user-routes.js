@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { getUserById, getAllUsers, createUser, authenticateLogin, lookupUserByToken, deleteUser } = require('../../controllers/user-controller')
+const { createUser, getAllUsers, getUserById, getUserByUsername, deleteUser, authenticateLogin, lookupUserByToken } = require('../../controllers/user-controller')
 const { addFriend, removeFriend } = require('../../controllers/friend-controller')
 
 
@@ -15,6 +15,9 @@ router.route("/lookup").get(lookupUserByToken)
 //   /api/user/:id
 router.route('/:userId').get(getUserById)
 router.route('/:userId').delete(deleteUser)
+
+//   /api/user/:username
+router.route('/:username').get(getUserByUsername)
 
 
 //   /api/user/:userId/:friendId     =>   add/remove from user friends list

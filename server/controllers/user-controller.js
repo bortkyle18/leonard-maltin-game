@@ -40,6 +40,27 @@ const getUserById = async (req, res) => {
   }
 }
 
+const getUserByUsername = async (req, res) => {
+  try {
+    const getUserByUsernameQuery = await User.findById(req.params.username)
+      .select('-__v -password')
+      .populate('friends', '-__v -password -_id -email')
+      .populate('categories')
+    res.status(200).json({ result: "success", payload: getUserByUsernameQuery })
+  } catch(err) {
+    res.status(400).json({ result: "fail", message: 'No user found by that username' })
+  }
+}
+
+const deleteUser = async (req, res) => {
+  try {
+    const deleteUserQuery = await User.findOneAndDelete(req.params.userId);
+    res.status(200).json({ result: "successfully deleted user"});
+  } catch(err) {
+    res.status(400).json(err);
+  }
+}
+
 const authenticateLogin = async (req, res) => {
   // First see if we have a user with the supplied email address 
   const foundUser = await User.findOne({ email: req.body.email })
@@ -81,20 +102,12 @@ const lookupUserByToken = async (req, res) => {
   return res.status(200).json({ result: "success", payload: { _id: user._id, email: user.email } })
 }
 
-const deleteUser = async (req, res) => {
-  try {
-    const deleteUserQuery = await User.findOneAndDelete(req.params.userId);
-    res.status(200).json({ result: "successfully deleted user"});
-  } catch(err) {
-    res.status(400).json(err);
-  }
-}
-
 
 module.exports = { 
   createUser,
   getAllUsers,
   getUserById,
+  getUserByUsername,
   authenticateLogin,
   lookupUserByToken,
   deleteUser
