@@ -3,13 +3,10 @@ import { useParams } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 
 const User = (props) => {
-  // id is the name of the wildcard variable we specified in the route in App.js
-  const { id } = useParams()
-
   const [ user, setUser ] = useState(null)
 
   const fetchUser = async () => {
-    const lookupQuery = await fetch(`/api/user/${id}`)
+    const lookupQuery = await fetch(`/api/user/${props.authUser._id}`)
     const parsedResponse = await lookupQuery.json()
     if( parsedResponse.result === "success" ){
       setUser(parsedResponse.payload)

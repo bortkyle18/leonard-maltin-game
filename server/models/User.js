@@ -10,7 +10,7 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
-    fname: {
+    pname: {
       type: String,
       required: true
     },

@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Container from "react-bootstrap/Container"
-import PageNotFound from "./pages/404"
+import CreateCategory from "./pages/CreateCategory"
 import Home from "./pages/Home"
+import HowToPlay from "./pages/HowToPlay"
 import Login from "./pages/Login"
-import Profile from "./pages/Profile"
-import Signup from "./pages/Signup"
-import Header from "./components/Header"
+import PageNotFound from "./pages/PageNotFound"
+import User from "./pages/User"
+import PublicCategories from "./pages/PublicCategories"
+import SignUp from "./pages/SignUp"
+import UserCategories from "./pages/UserCategories"
+import BasicNav from "./components/BasicNav"
 import Footer from "./components/Footer"
 
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -28,15 +32,19 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <BasicNav authUser={ authUser } />
       <Container>
         <Router>
           <Routes>
             <Route path="/" element={<Home authUser={ authUser } />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/profile">
-              <Route path=":userId" element={<Profile />} />
+            <Route path="/HowToPlay" element={<HowToPlay />} />
+            <Route path="/PublicCategories" element={<PublicCategories />} />
+            <Route path="/MyCategories" element={<UserCategories />} />
+            <Route path="/CreateCategory" element={<CreateCategory />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/Profile">
+              <Route path=":userId" element={<User />} />
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>

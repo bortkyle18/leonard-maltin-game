@@ -5,7 +5,7 @@ const Home = (props) => {
       <h1>Hello!</h1>
 
       { props.authUser && props.authUser.username !== undefined && (
-        <p>Welcome { props.authUser.fname }!</p>
+        <p>Welcome { props.authUser.pname }!</p>
       )}
     </div>
   )
