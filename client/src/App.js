@@ -14,6 +14,7 @@ import BasicNav from "./components/BasicNav"
 import Footer from "./components/Footer"
 
 import "bootstrap/dist/css/bootstrap.min.css"
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const [ authUser, setAuthUser ] = useState(null)
