@@ -20,11 +20,11 @@ const Login = (props) => {
     console.log(authResult)
 
     // If the login was good, save the returned token as a cookie
-    if( authResult.result === "success" ){
+    if( authResult.result !== "success" ){
+      setFormMessage({ type: "danger", msg: "Login Failed. You shall not pass! - Lord of the Rings: The Fellowship of the Ring (2002)" })
+    } else {
       Auth.login(authResult.token);
       Cookie.set("auth-token", authResult.token)
-    } else {
-      setFormMessage({ type: "danger", msg: "Login Failed. You shall not pass! - Lord of the Rings: The Fellowship of the Ring (2002)" })
     }
     setLoginCreds({ email: "", password: "" })
   }

@@ -34,15 +34,15 @@ const SignUp = () => {
         body: JSON.stringify(userFormData),
       });
 
-      console.log(response)
-
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
+      setShowErrorAlert(false);
       setShowSuccessAlert(true);
     } catch (err) {
       console.error(err);
+      setShowSuccessAlert(false);
       setShowErrorAlert(true);
     }
 

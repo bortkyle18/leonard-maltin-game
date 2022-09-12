@@ -3,7 +3,7 @@ const connection = require("../config/connection")
 
 // Seed Public User
 const seedUsers = [
-  { username: "Public", fname: "Public Categories", email: "bortkyle18@gmail.com", password: "admin2022" }
+  { username: "Public", pname: "Public Categories", email: "bortkyle18@gmail.com", password: "admin2022" }
 ]
 
 
