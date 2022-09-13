@@ -1,36 +1,67 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Navigate } from "react-router-dom"
 import Container from "react-bootstrap/Container"
+import auth from "../utils/auth"
 
 const User = (props) => {
-  const [ user, setUser ] = useState(null)
+  const user = props.authUser
+  const { username: userParam } = useParams();
+  const [ profileData, setProfileData ] = useState(null)
 
-  const fetchUser = async () => {
-    const lookupQuery = await fetch(`/api/user/${props.authUser._id}`)
-    const parsedResponse = await lookupQuery.json()
-    if( parsedResponse.result === "success" ){
-      setUser(parsedResponse.payload)
+  const getProfileData = async() => {
+    if (userParam === undefined) {
+      const response = await fetch(`/api/user/${auth.getProfile().username}`);
+      const parsedResponse = await response.json();
+      if (parsedResponse && parsedResponse.result === "success") {
+        setProfileData(parsedResponse.payload);
+      }
+    } else {
+      const response = await fetch(`/api/user/${userParam}`);
+      const parsedResponse = await response.json();
+      if (parsedResponse && parsedResponse.result === "success") {
+        setProfileData(parsedResponse.payload);
+      }
     }
   }
-
-  useEffect( () => {
-    fetchUser()
+  
+  useEffect(() => {
+    getProfileData()
   }, [])
 
-  return (
-    <Container style={{ paddingTop: "1em" }}>
-      { !user ? (
+
+  if (auth.loggedIn() === false) {
+    return (
+      <Container style={{ paddingTop: "1em" }}>
         <div>
-          <h1>Profile not found? INCONCEIVABLE!</h1>
+          <h1>You must be logged in? INCONCEIVABLE!</h1>
           <p>The Princess Bride (1987)</p>
         </div>
-      ) : (
-        <div>
-          {/* user info to display - user homepage */}
-        </div>
-      )}
-    </Container>
-  )
+      </Container>
+    )
+  }
+
+  if (user) {
+    // navigate to personal profile page if username is the logged-in user's
+    if (auth.loggedIn() && auth.getProfile().username === userParam) {
+      return <Navigate to="/profile" />;
+    }
+
+    return (
+      <Container style={{ paddingTop: "1em" }}>
+        { !profileData ? (
+          <div>
+            <h1>Profile not found? INCONCEIVABLE!</h1>
+            <p>The Princess Bride (1987)</p>
+          </div>
+        ) : (
+          <div>
+            {profileData.username}
+            {profileData.categories}
+          </div>
+        )}
+      </Container>
+    )
+  }
 }
 
 export default User

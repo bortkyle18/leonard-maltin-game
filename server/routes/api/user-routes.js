@@ -13,7 +13,6 @@ router.route("/auth").post(authenticateLogin)
 router.route("/lookup").get(lookupUserByToken)
 
 //   /api/user/:id
-router.route('/:userId').get(getUserById)
 router.route('/:userId').delete(deleteUser)
 
 //   /api/user/:username
@@ -21,8 +20,8 @@ router.route('/:username').get(getUserByUsername)
 
 
 //   /api/user/:userId/:friendId     =>   add/remove from user friends list
-router.route('/:userId/:friendId').put(addFriend)
-router.route('/:userId/:friendId').delete(removeFriend)
+router.route('/:username/:friendname').put(addFriend)
+router.route('/:username/:friendname').delete(removeFriend)
 
 
 

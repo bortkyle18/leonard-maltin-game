@@ -42,7 +42,7 @@ const getUserById = async (req, res) => {
 
 const getUserByUsername = async (req, res) => {
   try {
-    const getUserByUsernameQuery = await User.findById(req.params.username)
+    const getUserByUsernameQuery = await User.findOne({username: req.params.username})
       .select('-__v -password')
       .populate('friends', '-__v -password -_id -email')
       .populate('categories')
@@ -74,7 +74,7 @@ const authenticateLogin = async (req, res) => {
   const { password, ...modifiedUser } = foundUser
 
   // Create a token to represent the authenticated user
-  const token = jwt.sign({ _id: foundUser._id, email: foundUser.email}, process.env.JWT_SECRET)
+  const token = jwt.sign({ _id: foundUser._id, username:foundUser.username, email: foundUser.email}, process.env.JWT_SECRET)
 
   res
     .status(200)
@@ -99,7 +99,7 @@ const lookupUserByToken = async (req, res) => {
   const user = await User.findById(isVerified._id)
   if( !user ) return res.status(401).json({msg: "un-authorized"})
 
-  return res.status(200).json({ result: "success", payload: { _id: user._id, email: user.email } })
+  return res.status(200).json({ result: "success", payload: { userId: user._id, username: user.username, pname: user.pname, email: user.email, categories: user.categories, friends: user.friends } })
 }
 
 

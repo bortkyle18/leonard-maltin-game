@@ -14,7 +14,6 @@ import BasicNav from "./components/BasicNav"
 import Footer from "./components/Footer"
 
 import "bootstrap/dist/css/bootstrap.min.css"
-import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const [ authUser, setAuthUser ] = useState(null)
@@ -40,12 +39,13 @@ function App() {
             <Route path="/" element={<Home authUser={ authUser } />} />
             <Route path="/HowToPlay" element={<HowToPlay />} />
             <Route path="/PublicCategories" element={<PublicCategories />} />
-            <Route path="/MyCategories" element={<UserCategories />} />
-            <Route path="/CreateCategory" element={<CreateCategory />} />
+            <Route path="/MyCategories" element={<UserCategories authUser={ authUser }/>} />
+            <Route path="/CreateCategory" element={<CreateCategory authUser={ authUser }/>} />
             <Route path="/Login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Profile">
-              <Route path=":userId" element={<User />} />
+              <Route path=":username" element={<User authUser={ authUser }/>} />
+              <Route path="" element={<User authUser={ authUser }/>} />
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>

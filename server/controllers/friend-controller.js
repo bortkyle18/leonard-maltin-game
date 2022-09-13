@@ -4,7 +4,7 @@ const { User } = require("../models")
 const addFriend = async ({params}, res) => {
   try {
     // find user and update friend array to include new friend
-    const addFriendQuery = await User.findOneAndUpdate(
+    const addFriendQuery = await User.findByIdAndUpdate(
       params.userId,
       { $push: { friends: params.friendId } },
       { new: true })
@@ -21,7 +21,7 @@ const addFriend = async ({params}, res) => {
 const removeFriend = async ({params}, res) => {
   try {
     // find user and update friend array to uninclude friend
-    const removeFriendQuery = await User.findOneAndUpdate(
+    const removeFriendQuery = await User.findByIdAndUpdate(
       params.userId,
       { $pull: { friends: params.friendId } },
       { new: true })
