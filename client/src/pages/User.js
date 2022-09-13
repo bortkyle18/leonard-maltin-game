@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, Navigate } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import auth from "../utils/auth"
+import { Card } from "react-bootstrap"
 
 const User = (props) => {
   const user = props.authUser
@@ -28,6 +29,12 @@ const User = (props) => {
     getProfileData()
   }, [])
 
+  if (!user) {
+    return (
+      <p>Loading... Come on HAL!</p>
+    )
+  }
+
 
   if (auth.loggedIn() === false) {
     return (
@@ -39,29 +46,36 @@ const User = (props) => {
       </Container>
     )
   }
-
-  if (user) {
-    // navigate to personal profile page if username is the logged-in user's
-    if (auth.loggedIn() && auth.getProfile().username === userParam) {
-      return <Navigate to="/profile" />;
-    }
-
-    return (
-      <Container style={{ paddingTop: "1em" }}>
-        { !profileData ? (
-          <div>
-            <h1>Profile not found? INCONCEIVABLE!</h1>
-            <p>The Princess Bride (1987)</p>
-          </div>
-        ) : (
-          <div>
-            {profileData.username}
-            {profileData.categories}
-          </div>
-        )}
-      </Container>
-    )
+  
+  // navigate to personal profile page if username is the logged-in user's
+  if (auth.loggedIn() && auth.getProfile().username === userParam) {
+    return <Navigate to="/profile" />;
   }
+
+  return (
+    <Container style={{ paddingTop: "1em" }}>
+      { !profileData ? (
+        <div>
+          <h1>Profile not found? INCONCEIVABLE!</h1>
+          <p>The Princess Bride (1987)</p>
+        </div>
+      ) : (
+        <div>
+          <h3>{profileData.username}</h3>
+          {profileData.categories.map((category) => {
+            return (
+              <Card key={category._id}>
+                <Card.Body className="text-center">
+                    <Card.Title>{category.title}</Card.Title>
+                    <Card.Text>{category.description}</Card.Text>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </div>
+      )}
+    </Container>
+  )
 }
 
 export default User

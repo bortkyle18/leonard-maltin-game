@@ -21,6 +21,7 @@ const getAllUsers = async (req, res) => {
     const getAllQuery = await User.find({})
       .select('-__v -password')
       .populate('friends', '-__v -password -_id -email')
+      .populate('categories')
     res.status(200).json({ result: "success", payload: getAllQuery });
   } catch(err) {
     res.status(400).json({ message: 'No users found' });
@@ -32,6 +33,7 @@ const getUserById = async (req, res) => {
     const getByIdQuery = await User.findById(req.params.userId)
       .select('-__v -password')
       .populate('friends', '-__v -password -_id -email')
+      .populate('categories')
     res.status(200).json({ result: "success", payload: getByIdQuery })
   } catch(err) {
     res.status(400).json({ result: "fail", message: 'No user found by that id' })
@@ -43,6 +45,7 @@ const getUserByUsername = async (req, res) => {
     const getUserByUsernameQuery = await User.findOne({username: req.params.username})
       .select('-__v -password')
       .populate('friends', '-__v -password -_id -email')
+      .populate('categories')
     res.status(200).json({ result: "success", payload: getUserByUsernameQuery })
   } catch(err) {
     res.status(400).json({ result: "fail", message: 'No user found by that username' })
