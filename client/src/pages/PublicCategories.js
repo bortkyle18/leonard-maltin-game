@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react"
-import { useParams, Navigate } from "react-router-dom"
 import Container from "react-bootstrap/Container"
-import auth from "../utils/auth"
+import BasicNav from "../components/BasicNav"
 import { Card } from "react-bootstrap"
 
-const PublicCategories = () => {
+const PublicCategories = (props) => {
   const [ publicData, setPublicData ] = useState(null)
 
   const getPublicData = async() => {
@@ -28,6 +27,7 @@ const PublicCategories = () => {
   return (
     <Container style={{ paddingTop: "1em" }}>
       <div>
+        <BasicNav authUser={ props.authUser }/>
         <h3>{publicData.username}</h3>
         {publicData.categories.map((category) => {
           return (

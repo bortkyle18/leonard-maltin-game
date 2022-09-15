@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import BasicNav from '../components/BasicNav';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 
-const SignUp = () => {
+const SignUp = (props) => {
 
   const [userFormData, setUserFormData] = useState({ username: '', pname: '', email: '', password: '' });
   const [validated] = useState(false);
@@ -57,6 +58,7 @@ const SignUp = () => {
 
   return (
     <>
+      <BasicNav authUser={ props.authUser }/>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show success alert if server response is ok */}

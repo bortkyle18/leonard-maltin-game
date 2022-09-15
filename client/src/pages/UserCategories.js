@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Navigate } from "react-router-dom"
+import BasicNav from "../components/BasicNav"
 import Container from "react-bootstrap/Container"
 import auth from "../utils/auth"
 import { Card } from "react-bootstrap"
@@ -20,16 +20,12 @@ const UserCategories = (props) => {
     getProfileData()
   }, [])
 
-  if (!user) {
-    return (
-      <p>Loading... Come on HAL!</p>
-    )
-  }
 
 
-  if (auth.loggedIn() === false) {
+  if (!auth.loggedIn()) {
     return (
       <Container style={{ paddingTop: "1em" }}>
+        <BasicNav authUser={ props.authUser }/>
         <div>
           <h1>You must be logged in? INCONCEIVABLE!</h1>
           <p>The Princess Bride (1987)</p>
@@ -38,8 +34,18 @@ const UserCategories = (props) => {
     )
   }
 
+  if (!user) {
+    return (
+      <>
+        <BasicNav authUser={ props.authUser }/>
+        <p>Loading... Come on HAL!</p>
+      </>
+    )
+  }
+
   return (
     <Container style={{ paddingTop: "1em" }}>
+      <BasicNav authUser={ props.authUser }/>
       { !profileData ? (
         <div>
           <h1>Profile not found? INCONCEIVABLE!</h1>

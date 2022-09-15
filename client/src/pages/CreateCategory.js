@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Form, Button, Row, Card, Alert } from "react-bootstrap";
 import Container from "react-bootstrap/Container"
+import BasicNav from "../components/BasicNav";
 import auth from "../utils/auth"
 
 
@@ -19,6 +20,17 @@ const CreateCategory = (props) => {
   // Let user know if the category was saved or not
   const [saveMessage, setSaveMessage] = useState({ type: "", msg: "" });
 
+  if (!auth.loggedIn()) {
+    return (
+      <Container style={{ paddingTop: "1em" }}>
+        <BasicNav authUser={ props.authUser }/>
+        <div>
+          <h1>You must be logged in? INCONCEIVABLE!</h1>
+          <p>The Princess Bride (1987)</p>
+        </div>
+      </Container>
+    )
+  }
 
   const handleMovieSearchSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +60,14 @@ const CreateCategory = (props) => {
         title: movie.title,
         year: movie.description
       }))
+
+      if (!movieData) {
+        return (
+          <>
+            <p>Loading... Come on HAL!</p>
+          </>
+        )
+      }
 
       setMoviesFound(movieData);
       setMovieSearchInput("");
@@ -120,7 +140,8 @@ const CreateCategory = (props) => {
   if (props.authUser) {
     return (
       <>
-      <Form onSubmit={handleSaveCategory} className="text-center">
+        <BasicNav authUser={ props.authUser }/>
+        <Form onSubmit={handleSaveCategory} className="text-center">
           <Form.Control
             name="categoryInput"
             value={categoryInput}

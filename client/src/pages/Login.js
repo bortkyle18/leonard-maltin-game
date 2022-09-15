@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Cookie from "js-cookie"
 import { Alert, Button, Container, Form } from 'react-bootstrap'
+import BasicNav from "../components/BasicNav"
 import Auth from "../utils/auth"
 
 
@@ -31,6 +32,7 @@ const Login = (props) => {
 
   return (
     <Container>
+      <BasicNav authUser={ props.authUser }/>
       <Form onSubmit={handleLogin}>
         <Form.Group controlId="email">
           <Form.Label>Email address</Form.Label>

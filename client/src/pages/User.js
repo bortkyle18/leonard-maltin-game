@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, Navigate } from "react-router-dom"
 import Container from "react-bootstrap/Container"
+import BasicNav from "../components/BasicNav"
 import auth from "../utils/auth"
 import { Card } from "react-bootstrap"
 
@@ -9,7 +10,7 @@ const User = (props) => {
   const { username: userParam } = useParams();
   const [ profileData, setProfileData ] = useState(null)
 
-  const getProfileData = async() => {
+  const getProfileData = async(userParam) => {
     if (userParam === undefined) {
       const response = await fetch(`/api/user/${auth.getProfile().username}`);
       const parsedResponse = await response.json();
@@ -26,24 +27,27 @@ const User = (props) => {
   }
   
   useEffect(() => {
-    getProfileData()
-  }, [])
+    getProfileData(userParam)
+  }, [userParam])
 
-  if (!user) {
-    return (
-      <p>Loading... Come on HAL!</p>
-    )
-  }
-
-
-  if (auth.loggedIn() === false) {
+  if (!auth.loggedIn()) {
     return (
       <Container style={{ paddingTop: "1em" }}>
+        <BasicNav authUser={ props.authUser }/>
         <div>
           <h1>You must be logged in? INCONCEIVABLE!</h1>
           <p>The Princess Bride (1987)</p>
         </div>
       </Container>
+    )
+  }
+
+  if (!user) {
+    return (
+      <>
+        <BasicNav authUser={ props.authUser }/>
+        <p>Loading... Come on HAL!</p>
+      </>
     )
   }
   
@@ -54,6 +58,7 @@ const User = (props) => {
 
   return (
     <Container style={{ paddingTop: "1em" }}>
+      <BasicNav authUser={ props.authUser }/>
       { !profileData ? (
         <div>
           <h1>Profile not found? INCONCEIVABLE!</h1>

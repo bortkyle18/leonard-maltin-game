@@ -1,7 +1,10 @@
+import BasicNav from "../components/BasicNav"
+
 const PageNotFound = (props) => {
 
   return (
     <div>
+      <BasicNav authUser={ props.authUser }/>
       <h1>This is not the page you're looking for.</h1>
       <p>Star Wars: A New Hope (1977)</p>
       <br/>

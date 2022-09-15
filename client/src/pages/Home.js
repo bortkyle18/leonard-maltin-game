@@ -1,7 +1,10 @@
+import BasicNav from "../components/BasicNav"
+
 const Home = (props) => {
   
   return (
     <div>
+      <BasicNav authUser={ props.authUser }/>
       <h1>Hello!</h1>
 
       { props.authUser && props.authUser.username !== undefined && (

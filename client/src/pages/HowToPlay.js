@@ -1,7 +1,10 @@
+import BasicNav from "../components/BasicNav"
+
 const HowToPlay = (props) => {
   
   return (
     <div>
+      <BasicNav authUser={ props.authUser }/>
       <h1>How to Play the Leonard Maltin Game</h1>
       <br/>
       <p>
