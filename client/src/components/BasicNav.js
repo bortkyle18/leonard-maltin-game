@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
-import Auth from "../utils/auth"
+import auth from "../utils/auth"
 
 const BasicNav = (props) => {
   return (
@@ -13,14 +13,14 @@ const BasicNav = (props) => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/HowToPlay">How To Play</Nav.Link>
             {/* if user is... */}
-            {Auth.loggedIn() ? (
+            {auth.loggedIn() ? (
               // logged in show
               <>
                 <Nav.Link href='/Profile'>My Profile</Nav.Link>
                 <Nav.Link href="/PublicCategories">Public Categories</Nav.Link>
                 <Nav.Link href='/MyCategories'>My Categories</Nav.Link>
                 <Nav.Link href='/CreateCategory'>Create a Category</Nav.Link>
-                <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                <Nav.Link onClick={auth.logout}>Logout</Nav.Link>
               </>) : (
                 // not logged in show
                 <>

@@ -12,6 +12,9 @@ import SignUp from "./pages/SignUp"
 import UserCategories from "./pages/UserCategories"
 import Footer from "./components/Footer"
 
+import GameStart from "./gamePages/GameStart"
+import HowToPlayGame from "./gamePages/HowToPlayGame"
+
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
@@ -35,6 +38,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home authUser={ authUser } />} />
+
+            {/* Available pages when not playing a game */}
             <Route path="/HowToPlay" element={<HowToPlay authUser={ authUser } />} />
             <Route path="/PublicCategories" element={<PublicCategories authUser={ authUser } />} />
             <Route path="/MyCategories" element={<UserCategories authUser={ authUser } />} />
@@ -42,10 +47,16 @@ function App() {
             <Route path="/Login" element={<Login authUser={ authUser } />} />
             <Route path="/SignUp" element={<SignUp authUser={ authUser } />} />
             <Route path="/Profile">
-              <Route path=":username" element={<User authUser={ authUser }/>} />
-              <Route path="" element={<User authUser={ authUser }/>} />
+              <Route path=":username" element={<User authUser={ authUser } />} />
+              <Route path="" element={<User authUser={ authUser } />} />
             </Route>
-            <Route path="*" element={<PageNotFound />} />
+
+            {/* Available pages when playing a game */}
+            <Route path="/StartGame" element={<GameStart authUser={ authUser } />} />
+            <Route path="/HowToPlayGame" element={<HowToPlayGame authUser={ authUser } />} />
+
+            {/* Page not found */}
+            <Route path="*" element={<PageNotFound authUser={ authUser } />} />
           </Routes>
         </Router>
       </Container>
