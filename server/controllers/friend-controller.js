@@ -9,8 +9,8 @@ const addFriend = async ({params}, res) => {
       { $push: { friends: params.friendId } },
       { new: true })
       .select('-__v -password')
-      .populate('friends', '-__v -password -_id -email')
-      .populate('categories', '-__v -userId')
+      .populate('friends', '-__v -password -email')
+      .populate('categories', '-__v ')
       .sort()
     res.status(200).json({ result: "success", payload: addFriendQuery });
   } catch(err) {
@@ -26,8 +26,8 @@ const removeFriend = async ({params}, res) => {
       { $pull: { friends: params.friendId } },
       { new: true })
       .select('-__v -password')
-      .populate('friends', '-__v -password -_id -email')
-      .populate('categories', '-__v -userId')
+      .populate('friends', '-__v -password -email')
+      .populate('categories', '-__v ')
       .sort()
     res.status(200).json({ result: "success", payload: removeFriendQuery });
   } catch(err) {

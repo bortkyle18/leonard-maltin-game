@@ -20,7 +20,7 @@ const getAllUsers = async (req, res) => {
   try {
     const getAllQuery = await User.find({})
       .select('-__v -password')
-      .populate('friends', '-__v -password -_id -email')
+      .populate('friends', '-__v -password -email')
       .populate('categories')
     res.status(200).json({ result: "success", payload: getAllQuery });
   } catch(err) {
@@ -32,7 +32,7 @@ const getUserById = async (req, res) => {
   try {
     const getByIdQuery = await User.findById(req.params.userId)
       .select('-__v -password')
-      .populate('friends', '-__v -password -_id -email')
+      .populate('friends', '-__v -password -email')
       .populate('categories')
     res.status(200).json({ result: "success", payload: getByIdQuery })
   } catch(err) {
@@ -44,7 +44,7 @@ const getUserByUsername = async (req, res) => {
   try {
     const getUserByUsernameQuery = await User.findOne({username: req.params.username})
       .select('-__v -password')
-      .populate('friends', '-__v -password -_id -email')
+      .populate('friends', '-__v -password -email')
       .populate('categories')
     res.status(200).json({ result: "success", payload: getUserByUsernameQuery })
   } catch(err) {

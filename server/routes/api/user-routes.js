@@ -20,8 +20,8 @@ router.route('/:username').get(getUserByUsername)
 
 
 //   /api/user/:userId/:friendId     =>   add/remove from user friends list
-router.route('/:username/:friendname').put(addFriend)
-router.route('/:username/:friendname').delete(removeFriend)
+router.route('/:userId/:friendId').put(addFriend)
+router.route('/:userId/:friendId').delete(removeFriend)
 
 
 
