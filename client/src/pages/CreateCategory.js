@@ -22,6 +22,7 @@ const CreateCategory = (props) => {
 
   const handleMovieSearchSubmit = async (event) => {
     event.preventDefault();
+    setSaveMessage({type: "", msg: ""})
 
     // Don't allow blank input search
     if (!movieSearchInput) {
@@ -71,6 +72,8 @@ const CreateCategory = (props) => {
     } catch (err) {
       console.error(err);
     }
+
+    setMoviesFound([])
   };
 
   const handleDeleteMovieFromCategory = async (event) => {
@@ -106,6 +109,12 @@ const CreateCategory = (props) => {
         msg: "We were unable to save this category to your profile"
       });
     }
+
+    setCategoryInput("")
+    setDescriptionInput("")
+    setSavedMovies([])
+    setMovieSearchInput("")
+    setMoviesFound([])
   }
 
   if (props.authUser) {
