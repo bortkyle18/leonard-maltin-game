@@ -12,8 +12,11 @@ import SignUp from "./pages/SignUp"
 import UserCategories from "./pages/UserCategories"
 import Footer from "./components/Footer"
 
-import GameStart from "./gamePages/GameStart"
+import GameSetup from "./gamePages/GameSetup"
 import HowToPlayGame from "./gamePages/HowToPlayGame"
+import Play from "./gamePages/Play"
+import Scoreboard from "./gamePages/Scoreboard"
+import Category from "./gamePages/Category"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -52,8 +55,15 @@ function App() {
             </Route>
 
             {/* Gameplay pages */}
-            <Route path="/StartGame" element={<GameStart authUser={ authUser } />} />
+            <Route path="/GameSetup" element={<GameSetup authUser={ authUser } />} />
             <Route path="/HowToPlayGame" element={<HowToPlayGame authUser={ authUser } />} />
+            <Route path="/Play" element={<Play authUser={ authUser } />} />
+            <Route path="/Scoreboard" element={<Scoreboard authUser={ authUser } />} />
+            <Route
+              path="/Play/:categoryId"
+              element={<Category authUser={authUser} />}
+            />
+
 
             {/* Page not found */}
             <Route path="*" element={<PageNotFound authUser={ authUser } />} />

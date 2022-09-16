@@ -20,7 +20,7 @@ const Home = (props) => {
         <Button
           className="btn-block"
           variant="success"
-          href="./StartGame"
+          href="/GameSetup"
         >
           Start Game
       </Button>

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Card, Alert } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import { Button, Card } from "react-bootstrap";
 import Accordion from 'react-bootstrap/Accordion';
 import auth from "../utils/auth";
 
@@ -26,7 +24,8 @@ const ChooseCategories = (props) => {
     const response = await fetch(`/api/user/${auth.getProfile().username}`);
     const parsedResponse = await response.json();
     if (parsedResponse && parsedResponse.result === "success") {
-      await setProfileData(parsedResponse.payload)
+      setProfileData(parsedResponse.payload)
+      // eslint-disable-next-line
       parsedResponse.payload.friends.map((friend) => {
         getFriendsData(friend.username)
       })
@@ -34,6 +33,7 @@ const ChooseCategories = (props) => {
   }
   useEffect(() => {
     getProfileData()
+    // eslint-disable-next-line
   }, [])
   
   const getFriendsData = async(friend) => {
@@ -69,12 +69,6 @@ const ChooseCategories = (props) => {
 
   return (
     <>
-      <h1>
-        Game Setup
-        <Button className="btn-block" variant="success"> 
-          Start
-        </Button>
-      </h1>
       <h2>Choose categories you would like to include in this game.</h2>
       {props.gameCategories.length === 1 ? (
         <h3>You have {props.gameCategories.length} category selected for this game.</h3>

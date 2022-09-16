@@ -22,18 +22,9 @@ const createCategory = async ({params, body}, res) => {
   }
 }
 
-const getCategories = async ({params}, res) => {
-  try {
-    const getCategoriesQuery = await Category.find({userId: params.userId})
-    res.status(200).json({ result: "success", payload: getCategoriesQuery });
-  } catch(err) {
-    res.status(400).json({ message: 'No categories found' });
-  }
-}
-
 const getCategoryById = async ({params}, res) => {
   try {
-    const getCategoryByIdQuery = await Category.findOne({_id: params.categoryId})
+    const getCategoryByIdQuery = await Category.findById(params.categoryId)
     res.status(200).json({ result: "success", payload: getCategoryByIdQuery });
   } catch(err) {
     res.status(400).json({ message: 'Could not find specified category' });
@@ -64,7 +55,6 @@ const deleteCategory = async ({params}, res) => {
 
 module.exports = { 
   createCategory,
-  getCategories,
   getCategoryById,
   updateCategoryById,
   deleteCategory,
