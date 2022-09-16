@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import GameNav from '../components/GameNav';
 import { Button, Card, Alert } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import Accordion from 'react-bootstrap/Accordion';
 import auth from "../utils/auth";
 
@@ -68,18 +69,44 @@ const ChooseCategories = (props) => {
 
   return (
     <>
-      <h1>Game Setup</h1>
+      <h1>
+        Game Setup
+        <Button className="btn-block" variant="success"> 
+          Start
+        </Button>
+      </h1>
       <h2>Choose categories you would like to include in this game.</h2>
-      <Accordion>
+      {props.gameCategories.length === 1 ? (
+        <h3>You have {props.gameCategories.length} category selected for this game.</h3>
+      ) : (
+        <h3>You have {props.gameCategories.length} categories selected for this game.</h3>
+      )}
+      <Accordion alwaysOpen>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Public Categories</Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body className="divScroll">
             {publicData.categories.map((category) => {
               return (
                 <Card key={category._id}>
                   <Card.Body className="text-center">
-                      <Card.Title>{category.title}</Card.Title>
-                      <Card.Text>{category.description}</Card.Text>
+                    <Card.Title>{category.title} ({category.movies.length})</Card.Title>
+                    <Card.Text>{category.description}</Card.Text>
+                    {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
+                      <Button
+                        className="btn-block"
+                        variant="success"
+                        onClick={ () => props.setGameCategories([...props.gameCategories, category])}
+                      >
+                        Add Category
+                      </Button> 
+                      ): <Button
+                        className="btn-block"
+                        variant="danger"
+                        onClick={ () => props.setGameCategories(props.gameCategories.filter((categories) => categories._id !== category._id))}
+                      >
+                        Remove Category
+                      </Button>
+                    }
                   </Card.Body>
                 </Card>
               );
@@ -89,13 +116,29 @@ const ChooseCategories = (props) => {
         {auth.loggedIn() && profileData && (
           <Accordion.Item eventKey="1">
             <Accordion.Header>{profileData.username}'s Categories</Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body className="divScroll">
               {profileData.categories.map((category) => {
                 return (
                   <Card key={category._id}>
                     <Card.Body className="text-center">
-                        <Card.Title>{category.title}</Card.Title>
-                        <Card.Text>{category.description}</Card.Text>
+                      <Card.Title>{category.title} ({category.movies.length})</Card.Title>
+                      <Card.Text>{category.description}</Card.Text>
+                      {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
+                        <Button
+                          className="btn-block"
+                          variant="success"
+                          onClick={ () => props.setGameCategories([...props.gameCategories, category])}
+                        >
+                          Add Category
+                        </Button> 
+                        ): <Button
+                          className="btn-block"
+                          variant="danger"
+                          onClick={ () => props.setGameCategories(props.gameCategories.filter((categories) => categories._id !== category._id))}
+                        >
+                          Remove Category
+                        </Button>
+                      }
                     </Card.Body>
                   </Card>
                 );
@@ -108,13 +151,29 @@ const ChooseCategories = (props) => {
             return (
               <Accordion.Item eventKey={friend._id} key={friend._id}>
                 <Accordion.Header>{friend.username}'s Categories</Accordion.Header>
-                <Accordion.Body>
+                <Accordion.Body className="divScroll">
                   {friend.categories.map((category) => {
                     return (
                       <Card key={category._id}>
                         <Card.Body className="text-center">
-                            <Card.Title>{category.title}</Card.Title>
-                            <Card.Text>{category.description}</Card.Text>
+                          <Card.Title>{category.title} ({category.movies.length})</Card.Title>
+                          <Card.Text>{category.description}</Card.Text>
+                          {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
+                            <Button
+                              className="btn-block"
+                              variant="success"
+                              onClick={ () => props.setGameCategories([...props.gameCategories, category])}
+                            >
+                              Add Category
+                            </Button> 
+                            ): <Button
+                              className="btn-block"
+                              variant="danger"
+                              onClick={ () => props.setGameCategories(props.gameCategories.filter((categories) => categories._id !== category._id))}
+                            >
+                              Remove Category
+                            </Button>
+                          }
                         </Card.Body>
                       </Card>
                     );

@@ -48,6 +48,9 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 h2 {
@@ -1247,4 +1250,10 @@ nav a:hover {
   .align-center-xl {
     align-items: center;
   }
+}
+
+.divScroll {
+  height: 300px;
+  overflow: auto;
+  text-align: justify;
 }

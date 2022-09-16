@@ -39,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home authUser={ authUser } />} />
 
-            {/* Available pages when not playing a game */}
+            {/* Non-gameplay pages */}
             <Route path="/HowToPlay" element={<HowToPlay authUser={ authUser } />} />
             <Route path="/PublicCategories" element={<PublicCategories authUser={ authUser } />} />
             <Route path="/MyCategories" element={<UserCategories authUser={ authUser } />} />
@@ -51,7 +51,7 @@ function App() {
               <Route path="" element={<User authUser={ authUser } />} />
             </Route>
 
-            {/* Available pages when playing a game */}
+            {/* Gameplay pages */}
             <Route path="/StartGame" element={<GameStart authUser={ authUser } />} />
             <Route path="/HowToPlayGame" element={<HowToPlayGame authUser={ authUser } />} />
 
