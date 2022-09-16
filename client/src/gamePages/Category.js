@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Link } from "react-bootstrap";
 import GameNav from "../components/GameNave";
+import Score from "../components/score";
 
 const Category = (props) => {
   const { categoryId: categoryParam } = useParams();
@@ -25,6 +26,7 @@ const Category = (props) => {
     return (
       <>
         <GameNav/>
+        <Score/>
         <Card>
           <Card.Body className="text-center">
             <Card.Title>{categoryData.title}</Card.Title>

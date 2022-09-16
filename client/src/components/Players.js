@@ -8,7 +8,12 @@ const Players = (props) => {
   const handleSavePlayer = async (e) => {
     e.preventDefault();
 
-    props.setPlayers([...props.players, playerInput])
+    const playerToSave = {
+      player: playerInput,
+      score: 0
+    }
+
+    props.setPlayers([...props.players, playerToSave])
 
     setPlayerInput("")
   }
@@ -21,7 +26,7 @@ const Players = (props) => {
       {props.players.map((player) => {
         return (
           <div key={Math.random()}>
-            <h4>{player}</h4>
+            <h4>{player.player}</h4>
             <Button
               className="btn-block"
               variant="danger"

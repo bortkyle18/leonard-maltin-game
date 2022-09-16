@@ -1,10 +1,12 @@
 import GameNav from "../components/GameNave"
+import Score from "../components/score"
 
 const HowToPlayGame = (props) => {
   
   return (
     <div>
-      <GameNav authUser={ props.authUser }/>
+      <GameNav/>
+      <Score/>
       <h1>How to Play the Leonard Maltin Game</h1>
       <br/>
       <p>
