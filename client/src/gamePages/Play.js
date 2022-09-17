@@ -5,7 +5,6 @@ import Score from "../components/score";
 
 const Play = (props) => {
     const categories = JSON.parse(localStorage.getItem('gameCategories'));
-    const players = JSON.parse(localStorage.getItem('players'));
 
   return (
     <>

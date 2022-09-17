@@ -17,6 +17,7 @@ import HowToPlayGame from "./gamePages/HowToPlayGame"
 import Play from "./gamePages/Play"
 import Scoreboard from "./gamePages/Scoreboard"
 import Category from "./gamePages/Category"
+import Movie from "./gamePages/Movie"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -62,6 +63,10 @@ function App() {
             <Route
               path="/Play/:categoryId"
               element={<Category authUser={authUser} />}
+            />
+            <Route
+              path="/Play/:categoryId/:movieId"
+              element={<Movie authUser={authUser} />}
             />
 
 

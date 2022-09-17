@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Card, Link } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
 import GameNav from "../components/GameNave";
 import Score from "../components/score";
 
@@ -20,30 +20,31 @@ const Category = (props) => {
     getCategoryData(categoryParam);
   }, [categoryParam]);
 
-  console.log(categoryData.movies)
-
   if (categoryData.movies) {
     return (
       <>
         <GameNav/>
         <Score/>
         <Card>
-          <Card.Body className="text-center">
-            <Card.Title>{categoryData.title}</Card.Title>
-            <Card.Text>{categoryData.description}</Card.Text>
-            {categoryData.movies.map((movie) => {
-              return (<Card key={movie.id}>
-                <Card.Body className="text-center">
-                  <div>
-                    <Card.Title>{movie.title}</Card.Title>
-                    <p>{movie.year}</p>
-                    <p>Actors: {movie.actorList.length}</p>
-                  </div>
-                </Card.Body>
-              </Card>
-              )
-            })}
-          </Card.Body>
+            <Card.Body className="text-center">
+              <Card.Title>{categoryData.title}</Card.Title>
+              <Card.Text>{categoryData.description}</Card.Text>
+              {categoryData.movies.map((movie) => {
+                return (
+                  <Link to={`${movie.id}`} key={movie.id}>
+                    <Card>
+                      <Card.Body className="text-center">
+                        <div>
+                          <Card.Title>{movie.title}</Card.Title>
+                          <p>{movie.year}</p>
+                          <p>Actors: {movie.actorList.length}</p>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </Link>
+                )
+              })}
+            </Card.Body>
         </Card>
       </>
     );

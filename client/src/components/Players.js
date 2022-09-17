@@ -47,6 +47,7 @@ const Players = (props) => {
           type="text"
           size="lg"
           placeholder="Enter Player Name"
+          required
         />
         <Button type="submit" variant="success" size="sm">
           Save Player
