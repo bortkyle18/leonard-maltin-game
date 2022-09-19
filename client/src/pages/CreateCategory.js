@@ -86,7 +86,28 @@ const CreateCategory = (props) => {
   };
 
   const handleSaveMovieToCategory = async (movie) => {
-    setSavedMovies([...savedMovies, movie]);
+    const movieToAdd = {
+      id: movie.id,
+      title: movie.title,
+      year: movie.year,
+      image: movie.image,
+      runtimeStr: movie.runtimeStr,
+      contentRating: movie.contentRating,
+      actorList: movie.actorList,
+      directorList: movie.directorList,
+      writerList: movie.writerList,
+      imDbRating: movie.imDbRating,
+      metacriticRating: movie.metacriticRating,
+      genreList: movie.genreList,
+      plot: movie.plot,
+      tagline: movie.tagline,
+      awards: movie.awards,
+      boxOffice: movie.boxOffice,
+      keywordList: movie.keywordList,
+      similars: movie.similars
+    };
+
+    setSavedMovies([...savedMovies, movieToAdd]);
 
     setMoviesFound([])
   };
@@ -155,41 +176,44 @@ const CreateCategory = (props) => {
             placeholder="Category Description"
           />
 
-        <Container>
-            <p>
-              {savedMovies.length < 2 ? `You have ${savedMovies.length} movie in: ${categoryInput}`: `You have ${savedMovies.length} movies in: ${categoryInput}`}
-            </p>
-            <Row xs={3} md={5} >
-              {savedMovies.map((movie) => {
-                return (
-                  <Card key={movie.id}>
-                    <Card.Body className="text-center" style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                      <div>
-                        <Card.Title>{movie.title}</Card.Title>
-                        {movie.image ? (
-                          <Card.Img
-                            src={movie.image}
-                            alt={`The poster for ${movie.title}`}
-                            variant="top"
-                          />
-                        ) : null}
-                        <p>{movie.year}</p>
-                      </div>
-                      <div className="text-center">
-                        <Button
-                          className="btn-block"
-                          variant="danger"
-                          onClick={() => handleDeleteMovieFromCategory(movie)}
-                        >
-                          Delete from Category
-                        </Button>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-            </Row>
-          </Container>
+
+        {savedMovies.length !== 0 && (
+          <Container>
+              <p>
+                {savedMovies.length < 2 ? `You have ${savedMovies.length} movie in: ${categoryInput}`: `You have ${savedMovies.length} movies in: ${categoryInput}`}
+              </p>
+              <Row xs={3} md={5} >
+                {savedMovies.map((movie) => {
+                  return (
+                    <Card key={movie.id}>
+                      <Card.Body className="text-center" style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                        <div>
+                          <Card.Title>{movie.title}</Card.Title>
+                          {movie.image ? (
+                            <Card.Img
+                              src={movie.image}
+                              alt={`The poster for ${movie.title}`}
+                              variant="top"
+                            />
+                          ) : null}
+                          <p>{movie.year}</p>
+                        </div>
+                        <div className="text-center">
+                          <Button
+                            className="btn-block"
+                            variant="danger"
+                            onClick={() => handleDeleteMovieFromCategory(movie)}
+                          >
+                            Delete from Category
+                          </Button>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  );
+                })}
+              </Row>
+            </Container>
+          )}
           {categoryInput.length > 0 && descriptionInput.length > 0 && savedMovies.length > 0 && (
           <Button type="submit" variant="success" size="lg">
             Save Category

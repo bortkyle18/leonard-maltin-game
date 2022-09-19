@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container"
 import BasicNav from "../components/BasicNav"
 import auth from "../utils/auth"
 import { Card, Button, Alert } from "react-bootstrap"
+import Friends from "../components/Friends"
 
 const User = (props) => {
   const user = props.authUser
@@ -101,23 +102,30 @@ const User = (props) => {
                       <Card.Text>{category.description}</Card.Text>
                   </Card.Body>
                 </Link>
-                <Button
-                  className="btn-block"
-                  variant="warning"
-                  href={`/EditCategory/${category._id}`}
-                  >
-                    Edit Category
-                </Button>
-                <Button
-                  className="btn-block"
-                  variant="danger"
-                  onClick={() => handleCategoryDelete(category._id)}
-                  >
-                    Delete Category
-                </Button>
+                {auth.getProfile().username === profileData.username && (
+                  <>
+                    <Button
+                      className="btn-block"
+                      variant="warning"
+                      href={`/EditCategory/${category._id}`}
+                      >
+                        Edit Category
+                    </Button>
+                    <Button
+                      className="btn-block"
+                      variant="danger"
+                      onClick={() => handleCategoryDelete(category._id)}
+                      >
+                        Delete Category
+                    </Button>
+                  </>
+                )}
               </Card>
             );
           })}
+          <Card>
+            <Friends user={profileData}/>
+          </Card>
         </div>
       )}
     </Container>

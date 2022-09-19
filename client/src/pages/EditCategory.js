@@ -104,7 +104,28 @@ const EditCategory = (props) => {
   };
 
   const handleSaveMovieToCategory = async (movie) => {
-    setSavedMovies([...savedMovies, movie]);
+    const movieToAdd = {
+      id: movie.id,
+      title: movie.title,
+      year: movie.year,
+      image: movie.image,
+      runtimeStr: movie.runtimeStr,
+      contentRating: movie.contentRating,
+      actorList: movie.actorList,
+      directorList: movie.directorList,
+      writerList: movie.writerList,
+      imDbRating: movie.imDbRating,
+      metacriticRating: movie.metacriticRating,
+      genreList: movie.genreList,
+      plot: movie.plot,
+      tagline: movie.tagline,
+      awards: movie.awards,
+      boxOffice: movie.boxOffice,
+      keywordList: movie.keywordList,
+      similars: movie.similars
+    };
+
+    setSavedMovies([...savedMovies, movieToAdd]);
 
     setMoviesFound([])
   };

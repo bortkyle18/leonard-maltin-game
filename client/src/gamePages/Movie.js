@@ -103,7 +103,7 @@ const Movie = (props) => {
                           <Accordion.Header>Additional Info</Accordion.Header>
                           <Accordion.Body>
                             {movie.awards !== null && (
-                              <p>Awards: {movie.awards}</p>
+                              <p>{movie.awards}</p>
                             )}
                             <p>USA Opening Weekend: {movie.boxOffice.openingWeekendUSA}</p>
                             <p>USA Gross: {movie.boxOffice.grossUSA}</p>
