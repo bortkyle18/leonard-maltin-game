@@ -3,12 +3,13 @@ import { useParams, Navigate, Link } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import BasicNav from "../components/BasicNav"
 import auth from "../utils/auth"
-import { Card } from "react-bootstrap"
+import { Card, Button, Alert } from "react-bootstrap"
 
 const User = (props) => {
   const user = props.authUser
   const { username: userParam } = useParams();
   const [ profileData, setProfileData ] = useState(null)
+  const [deleteMessage, setDeleteMessage] = useState({ type: "", msg: "" });
 
   const getProfileData = async(userParam) => {
     if (userParam === undefined) {
@@ -29,6 +30,22 @@ const User = (props) => {
   useEffect(() => {
     getProfileData(userParam)
   }, [userParam])
+
+  const handleCategoryDelete = async (categoryId) => {
+    const deleteCategory = await fetch(`../api/category/${categoryId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    });
+    const deleteCategoryResult = await deleteCategory.json();
+
+    if (deleteCategoryResult.result !== "success") {
+      setDeleteMessage({
+        type: "danger",
+        msg: "We were unable to delete this category from your profile"
+      });
+    }
+    window.location.reload()
+  }
 
   if (!auth.loggedIn()) {
     return (
@@ -67,6 +84,14 @@ const User = (props) => {
       ) : (
         <div>
           <h3>{profileData.username}</h3>
+          {deleteMessage.msg.length > 0 && (
+            <Alert
+              variant={deleteMessage.type}
+              style={{ marginTop: "2em" }}
+            >
+              {deleteMessage.msg}
+            </Alert>
+          )}
           {profileData.categories.map((category) => {
             return (
               <Card key={category._id}>
@@ -76,6 +101,20 @@ const User = (props) => {
                       <Card.Text>{category.description}</Card.Text>
                   </Card.Body>
                 </Link>
+                <Button
+                  className="btn-block"
+                  variant="warning"
+                  href={`/EditCategory/${category._id}`}
+                  >
+                    Edit Category
+                </Button>
+                <Button
+                  className="btn-block"
+                  variant="danger"
+                  onClick={() => handleCategoryDelete(category._id)}
+                  >
+                    Delete Category
+                </Button>
               </Card>
             );
           })}

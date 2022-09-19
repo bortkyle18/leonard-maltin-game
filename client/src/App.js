@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import CreateCategory from "./pages/CreateCategory"
+import EditCategory from "./pages/EditCategory"
 import Home from "./pages/Home"
 import HowToPlay from "./pages/HowToPlay"
 import Login from "./pages/Login"
@@ -54,6 +55,10 @@ function App() {
               <Route path=":username" element={<User authUser={ authUser } />} />
               <Route path="" element={<User authUser={ authUser } />} />
             </Route>
+            <Route
+              path="/EditCategory/:categoryId"
+              element={<EditCategory authUser={authUser} />}
+            />
             <Route
               path="/Category/:categoryId"
               element={<ViewCategory authUser={authUser} />}
