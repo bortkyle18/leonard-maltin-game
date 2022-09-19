@@ -3,39 +3,37 @@ import { useParams, Link } from "react-router-dom";
 import { Card, Row } from "react-bootstrap";
 import Accordion from 'react-bootstrap/Accordion';
 import GameNav from "../components/GameNave";
-import Score from "../components/score";
+import Points from "../components/Points"
 
 const Movie = (props) => {
   const { categoryId: categoryParam } = useParams();
   const { movieId: movieParam } = useParams();
-  const [categoryData, setCategoryData] = useState([]);
-
-  const getCategoryData = async (categoryParam) => {
-    const response = await fetch(`/api/category/${categoryParam}`);
-    const parsedResponse = await response.json();
-    if (parsedResponse && parsedResponse.result === "success") {
-      setCategoryData(parsedResponse.payload);
-    }
-  };
+  const [currentCategory, setCurrentCategory] = useState([]);
+  const [gameCategories, setGameCategories] = useState([]);
 
   useEffect(() => {
-    getCategoryData(categoryParam);
-  }, [categoryParam]);
+    setGameCategories(JSON.parse(localStorage.getItem('gameCategories')));
+  }, []);
 
-  console.log(categoryData.movies)
+  useEffect(() => {
+    if (gameCategories.length > 0) {
+      const currentCategoryData = gameCategories.filter((category) => category.id === categoryParam)
+      setCurrentCategory(currentCategoryData[0])
+    }
+  }, [categoryParam, gameCategories, currentCategory])
 
-  if (categoryData.movies) {
+  if (currentCategory.movies) {
     return (
       <>
         <GameNav/>
-        <Score/>
+        <Points movieData={movieParam} categoryData={currentCategory}/>
         <Card>
             <Card.Body className="text-center">
-              <Link to={`../Play/${categoryData._id}`}>
-                <Card.Title>{categoryData.title}</Card.Title>
-                <Card.Text>{categoryData.description}</Card.Text>
+              <Link to={`../Play/${currentCategory._id}`}>
+                <Card.Title>{currentCategory.title}</Card.Title>
+                <Card.Text>{currentCategory.description}</Card.Text>
               </Link>
-              {categoryData.movies.map((movie) => {
+              {currentCategory.movies.map((movie) => {
                 return (
                   <div key={movie.id}>
                     {movie.id === movieParam &&(

@@ -6,30 +6,30 @@ import Score from "../components/score";
 
 const Category = (props) => {
   const { categoryId: categoryParam } = useParams();
-  const [categoryData, setCategoryData] = useState([]);
-
-  const getCategoryData = async (categoryParam) => {
-    const response = await fetch(`../api/category/${categoryParam}`);
-    const parsedResponse = await response.json();
-    if (parsedResponse && parsedResponse.result === "success") {
-      setCategoryData(parsedResponse.payload);
-    }
-  };
+  const [currentCategory, setCurrentCategory] = useState([]);
+  const [gameCategories, setGameCategories] = useState([]);
 
   useEffect(() => {
-    getCategoryData(categoryParam);
-  }, [categoryParam]);
+    setGameCategories(JSON.parse(localStorage.getItem('gameCategories')));
+  }, []);
 
-  if (categoryData.movies) {
+  useEffect(() => {
+    if (gameCategories.length > 0) {
+      const currentCategoryData = gameCategories.filter((category) => category.id === categoryParam)
+      setCurrentCategory(currentCategoryData[0])
+    }
+  }, [categoryParam, gameCategories, currentCategory])
+
+  if (currentCategory.movies) {
     return (
       <>
         <GameNav/>
         <Score/>
         <Card>
             <Card.Body className="text-center">
-              <Card.Title>{categoryData.title}</Card.Title>
-              <Card.Text>{categoryData.description}</Card.Text>
-              {categoryData.movies.map((movie) => {
+              <Card.Title>{currentCategory.title}</Card.Title>
+              <Card.Text>{currentCategory.description}</Card.Text>
+              {currentCategory.movies.map((movie) => {
                 return (
                   <Link to={`${movie.id}`} key={movie.id}>
                     <Card>

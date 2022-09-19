@@ -18,7 +18,6 @@ const Login = (props) => {
       body: JSON.stringify(loginCreds)
     })
     const authResult = await authCheck.json()
-    console.log(authResult)
 
     // If the login was good, save the returned token as a cookie
     if( authResult.result !== "success" ){

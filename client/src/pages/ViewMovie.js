@@ -21,8 +21,6 @@ const ViewMovie = (props) => {
     getCategoryData(categoryParam);
   }, [categoryParam]);
 
-  console.log(categoryData.movies)
-
   if (categoryData.movies) {
     return (
       <>
