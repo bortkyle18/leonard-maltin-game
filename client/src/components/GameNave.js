@@ -10,7 +10,7 @@ const GameNav = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/Play">Category Select</Nav.Link>
-            <Nav.Link href="/Scoreboard">Scoreboard</Nav.Link>
+            <Nav.Link href="/Scoreboard">Adjust Scores</Nav.Link>
             <Nav.Link href="/HowToPlayGame">How To Play</Nav.Link>
             <Nav.Link href="/">Quit</Nav.Link>
           </Nav>

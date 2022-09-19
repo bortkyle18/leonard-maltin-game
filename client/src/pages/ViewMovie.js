@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Row } from "react-bootstrap";
 import Accordion from 'react-bootstrap/Accordion';
-import GameNav from "../components/GameNave";
-import Score from "../components/score";
+import BasicNav from "../components/BasicNav";
 
-const Movie = (props) => {
+const ViewMovie = (props) => {
   const { categoryId: categoryParam } = useParams();
   const { movieId: movieParam } = useParams();
   const [categoryData, setCategoryData] = useState([]);
@@ -27,8 +26,7 @@ const Movie = (props) => {
   if (categoryData.movies) {
     return (
       <>
-        <GameNav/>
-        <Score/>
+        <BasicNav/>
         <Card>
             <Card.Body className="text-center">
               <Card.Title>{categoryData.title}</Card.Title>
@@ -174,4 +172,4 @@ const Movie = (props) => {
   }
 };
 
-export default Movie;
+export default ViewMovie;

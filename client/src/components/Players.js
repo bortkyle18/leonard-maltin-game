@@ -49,7 +49,8 @@ const Players = (props) => {
           placeholder="Enter Player Name"
           required
         />
-        <Button type="submit" variant="success" size="sm">
+        <Button type="submit" variant="success" size="sm"
+          disabled={!playerInput}>
           Save Player
         </Button>
       </Form>

@@ -1253,7 +1253,30 @@ nav a:hover {
 }
 
 .divScroll {
-  height: 300px;
+  height: 25rem;
   overflow: auto;
   text-align: justify;
+}
+
+.actorScroll {
+  height: 29rem;
+  overflow: auto;
+}
+
+.actorList {
+  height: fit-content;
+  display: inline-flex;
+  overflow: auto;
+}
+
+.actorCard {
+  min-height: 10rem;
+  width: 18rem;
+  margin: 1rem;
+}
+
+.actorImage {
+  height: 20rem;
+  max-width: 15rem;
+  min-width: 10rem;
 }

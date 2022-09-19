@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Players from '../components/Players'
-import SetupNav from '../components/SetupNav';
 import ChooseCategories from "../components/ChooseCategories";
 
 const GameStart = (props) => {
@@ -26,12 +25,17 @@ const GameStart = (props) => {
 
   return (
     <>
-      <SetupNav/>
       <h1>
         Game Setup
-        <Button className="btn-block" variant="success" href="/Play"> 
-          Start
-        </Button>
+        <div>
+          <Button className="btn-block" variant="success" href="/Play"
+            disabled={(players.length < 2 || gameCategories.length < 1)}> 
+            Start Game
+          </Button>
+          <Button className="btn-block" variant="danger" href="/"> 
+            Back to Home
+          </Button>
+        </div>
       </h1>
       <Players players={ players } setPlayers={ setPlayers } />
       <ChooseCategories gameCategories={ gameCategories } setGameCategories={ setGameCategories } />

@@ -9,8 +9,9 @@ import PageNotFound from "./pages/PageNotFound"
 import User from "./pages/User"
 import PublicCategories from "./pages/PublicCategories"
 import SignUp from "./pages/SignUp"
-import UserCategories from "./pages/UserCategories"
 import Footer from "./components/Footer"
+import ViewCategory from "./pages/ViewCategory"
+import ViewMovie from "./pages/ViewMovie"
 
 import GameSetup from "./gamePages/GameSetup"
 import HowToPlayGame from "./gamePages/HowToPlayGame"
@@ -46,7 +47,6 @@ function App() {
             {/* Non-gameplay pages */}
             <Route path="/HowToPlay" element={<HowToPlay authUser={ authUser } />} />
             <Route path="/PublicCategories" element={<PublicCategories authUser={ authUser } />} />
-            <Route path="/MyCategories" element={<UserCategories authUser={ authUser } />} />
             <Route path="/CreateCategory" element={<CreateCategory authUser={ authUser } />} />
             <Route path="/Login" element={<Login authUser={ authUser } />} />
             <Route path="/SignUp" element={<SignUp authUser={ authUser } />} />
@@ -54,6 +54,14 @@ function App() {
               <Route path=":username" element={<User authUser={ authUser } />} />
               <Route path="" element={<User authUser={ authUser } />} />
             </Route>
+            <Route
+              path="/Category/:categoryId"
+              element={<ViewCategory authUser={authUser} />}
+            />
+            <Route
+              path="/Category/:categoryId/:movieId"
+              element={<ViewMovie authUser={authUser} />}
+            />
 
             {/* Gameplay pages */}
             <Route path="/GameSetup" element={<GameSetup authUser={ authUser } />} />

@@ -18,7 +18,6 @@ const BasicNav = (props) => {
               <>
                 <Nav.Link href='/Profile'>My Profile</Nav.Link>
                 <Nav.Link href="/PublicCategories">Public Categories</Nav.Link>
-                <Nav.Link href='/MyCategories'>My Categories</Nav.Link>
                 <Nav.Link href='/CreateCategory'>Create a Category</Nav.Link>
                 <Nav.Link onClick={auth.logout}>Logout</Nav.Link>
               </>) : (

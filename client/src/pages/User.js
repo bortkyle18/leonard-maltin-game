@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Navigate } from "react-router-dom"
+import { useParams, Navigate, Link } from "react-router-dom"
 import Container from "react-bootstrap/Container"
 import BasicNav from "../components/BasicNav"
 import auth from "../utils/auth"
@@ -70,10 +70,12 @@ const User = (props) => {
           {profileData.categories.map((category) => {
             return (
               <Card key={category._id}>
-                <Card.Body className="text-center">
-                    <Card.Title>{category.title}</Card.Title>
-                    <Card.Text>{category.description}</Card.Text>
-                </Card.Body>
+                <Link to={`../../Category/${category.id}`}>
+                  <Card.Body className="text-center">
+                      <Card.Title>{category.title}</Card.Title>
+                      <Card.Text>{category.description}</Card.Text>
+                  </Card.Body>
+                </Link>
               </Card>
             );
           })}

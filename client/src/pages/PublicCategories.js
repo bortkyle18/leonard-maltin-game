@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Container from "react-bootstrap/Container"
 import BasicNav from "../components/BasicNav"
+import { Link } from "react-router-dom"
 import { Card } from "react-bootstrap"
 
 const PublicCategories = (props) => {
@@ -32,10 +33,12 @@ const PublicCategories = (props) => {
         {publicData.categories.map((category) => {
           return (
             <Card key={category._id}>
-              <Card.Body className="text-center">
-                  <Card.Title>{category.title}</Card.Title>
-                  <Card.Text>{category.description}</Card.Text>
-              </Card.Body>
+              <Link to={`../../Category/${category.id}`}>
+                <Card.Body className="text-center">
+                    <Card.Title>{category.title}</Card.Title>
+                    <Card.Text>{category.description}</Card.Text>
+                </Card.Body>
+              </Link>
             </Card>
           );
         })}
