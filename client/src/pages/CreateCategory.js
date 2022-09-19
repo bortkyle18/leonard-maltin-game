@@ -79,10 +79,10 @@ const CreateCategory = (props) => {
 
       findMovies(results)
       setMovieSearchInput("");
+      setLoadingMessage("")
     } catch (err) {
       console.error(err);
     }
-    setLoadingMessage("")
   };
 
   const handleSaveMovieToCategory = async (movie) => {

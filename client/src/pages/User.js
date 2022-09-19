@@ -98,7 +98,7 @@ const User = (props) => {
               <Card key={category._id}>
                 <Link to={`../../Category/${category.id}`}>
                   <Card.Body className="text-center">
-                      <Card.Title>{category.title}</Card.Title>
+                      <Card.Title>{category.title} ({category.movies.length})</Card.Title>
                       <Card.Text>{category.description}</Card.Text>
                   </Card.Body>
                 </Link>
