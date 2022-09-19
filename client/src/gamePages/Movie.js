@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card, Row } from "react-bootstrap";
 import Accordion from 'react-bootstrap/Accordion';
 import GameNav from "../components/GameNave";
@@ -31,8 +31,10 @@ const Movie = (props) => {
         <Score/>
         <Card>
             <Card.Body className="text-center">
-              <Card.Title>{categoryData.title}</Card.Title>
-              <Card.Text>{categoryData.description}</Card.Text>
+              <Link to={`../Play/${categoryData._id}`}>
+                <Card.Title>{categoryData.title}</Card.Title>
+                <Card.Text>{categoryData.description}</Card.Text>
+              </Link>
               {categoryData.movies.map((movie) => {
                 return (
                   <div key={movie.id}>

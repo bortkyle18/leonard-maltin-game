@@ -156,8 +156,8 @@ const CreateCategory = (props) => {
           />
 
         <Container>
-          <p>
-              {savedMovies.length ? `You have ${savedMovies.length} movie(s) in: ${categoryInput}`: ""}
+            <p>
+              {savedMovies.length < 2 ? `You have ${savedMovies.length} movie in: ${categoryInput}`: `You have ${savedMovies.length} movies in: ${categoryInput}`}
             </p>
             <Row xs={3} md={5} >
               {savedMovies.map((movie) => {
