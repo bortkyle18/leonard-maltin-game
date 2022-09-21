@@ -1280,3 +1280,9 @@ nav a:hover {
   max-width: 15rem;
   min-width: 10rem;
 }
+
+.playerImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
