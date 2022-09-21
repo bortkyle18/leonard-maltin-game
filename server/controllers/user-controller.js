@@ -61,6 +61,8 @@ const deleteUser = async (req, res) => {
   }
 }
 
+JWT_SECRET = movieBuffs2022
+
 const authenticateLogin = async (req, res) => {
   // First see if we have a user with the supplied email address 
   const foundUser = await User.findOne({ email: req.body.email })
@@ -74,7 +76,7 @@ const authenticateLogin = async (req, res) => {
   const { password, ...modifiedUser } = foundUser
 
   // Create a token to represent the authenticated user
-  const token = jwt.sign({ _id: foundUser._id, username:foundUser.username, email: foundUser.email})
+  const token = jwt.sign({ _id: foundUser._id, username:foundUser.username, email: foundUser.email}, JWT_SECRET)
 
   res
     .status(200)
@@ -93,7 +95,7 @@ const lookupUserByToken = async (req, res) => {
   if( !token ) return res.status(401).json({msg: "un-authorized"})
   
   // Look up the user from the decoded token
-  const isVerified = jwt.verify(token)
+  const isVerified = jwt.verify(token, JWT_SECRET)
   if( !isVerified ) return res.status(401).json({msg: "un-authorized"})
 
   const user = await User.findById(isVerified._id)
