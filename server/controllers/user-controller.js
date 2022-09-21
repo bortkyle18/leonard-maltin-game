@@ -74,7 +74,7 @@ const authenticateLogin = async (req, res) => {
   const { password, ...modifiedUser } = foundUser
 
   // Create a token to represent the authenticated user
-  const token = jwt.sign({ _id: foundUser._id, username:foundUser.username, email: foundUser.email}, process.env.JWT_SECRET)
+  const token = jwt.sign({ _id: foundUser._id, username:foundUser.username, email: foundUser.email})
 
   res
     .status(200)
@@ -93,7 +93,7 @@ const lookupUserByToken = async (req, res) => {
   if( !token ) return res.status(401).json({msg: "un-authorized"})
   
   // Look up the user from the decoded token
-  const isVerified = jwt.verify(token, process.env.JWT_SECRET)
+  const isVerified = jwt.verify(token)
   if( !isVerified ) return res.status(401).json({msg: "un-authorized"})
 
   const user = await User.findById(isVerified._id)
