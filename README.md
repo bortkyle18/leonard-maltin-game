@@ -1,3 +1,3 @@
 # The Leonard Maltin Game
 
-Currently in development. To checkout the progress, clone the development repo and run ```npm install``` from the root directory. Once complete, run ```npm run develop``` and navigate through the site at its most recent development stage!
+Currently in the end stages of development. To checkout the progress, visit the most recently launched version at [The Leonard Maltin Game Website](https://theleonardmaltingame.herokuapp.com)
