@@ -61,7 +61,7 @@ const deleteUser = async (req, res) => {
   }
 }
 
-JWT_SECRET = movieBuffs2022
+JWT_SECRET = "movieBuffs2022"
 
 const authenticateLogin = async (req, res) => {
   // First see if we have a user with the supplied email address 
