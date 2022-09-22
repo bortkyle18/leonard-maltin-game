@@ -25,7 +25,7 @@ const GameStart = (props) => {
   }, []);
 
   return (
-    <>
+    <div className="gameSetUp">
       <div className="startGameButton">
         <Button className="btn-block" id="success-btn" variant="none" size="lg" href="/Play"
           disabled={(players.length < 2 || gameCategories.length < 1)}> 
@@ -58,7 +58,7 @@ const GameStart = (props) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

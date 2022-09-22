@@ -24,8 +24,6 @@ body {
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Inconsolata', monospace;
   font-weight: 400;
   line-height: 1.5;
@@ -101,7 +99,7 @@ nav {
 
 nav a {
   padding: 6px 10px;
-  margin: 0 15px;
+  margin: 0 0 0 30px;
   transition: all 0.2s;
 }
 
@@ -146,7 +144,6 @@ nav a:hover {
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
   background-color: var(--light);
-  color: var(--dark);
 }
 
 .card-header {
@@ -954,7 +951,6 @@ nav a:hover {
 }
 
 .setUpTitle {
-  margin-top: 80px;
   font-size: 60px;
   text-align: center;
 }
@@ -964,9 +960,9 @@ nav a:hover {
 }
 
 .howToPlay {
-  background-color: rgba(255,255,255,.8);
+  background-color: rgba(0,0,0,.8);
   border-radius: 30px;
-  padding: 10px 10px;
+  padding: 1rem;
 }
 
 .howToPlay h1 {
@@ -977,11 +973,6 @@ nav a:hover {
     0 1px 0 rgba(0,0,0),
     0 2px 0 rgba(0,0,0),
     0 10px 10px rgba(0,0,0,.25);
-}
-
-.howToPlay p {
-  color: #116466;
-  font-size: 25px;
 }
 
 .navIcon button {
@@ -1012,15 +1003,25 @@ nav a:hover {
 }
 
 .categoryCard {
+  max-width: 12rem;
   text-decoration: none;
   color: #116466;
 }
 
+.categoryCard:hover {
+  color: #3C1F41;
+}
+
+.cardStack {
+  margin: 1rem;
+}
+
 .welcome {
   margin: 10px;
+  color: #116466;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   text-shadow: 0 1px 0 rgba(0,0,0), 
   0 2px 0 rgba(0,0,0),
   0 10px 10px rgba(0,0,0,.25),
@@ -1041,6 +1042,59 @@ nav a:hover {
   flex-wrap: wrap;
   min-width: 14rem;
   justify-content: center;
+}
+
+.signInUpForm {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 20rem;
+  border-radius: 1rem;
+}
+
+.playerCard {
+  border-radius: var(--border-radius);
+  background-color: #3C1F41;
+}
+
+.gameSetUp {
+  margin-top: 6rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.selectCategoryCard {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  color: #116466;
+}
+
+.selectCategoryCard h3 {
+  padding-bottom: 2rem;
+}
+
+.movieCard {
+  text-decoration: none;
+  margin: 0 3rem;
+  min-width: 15rem;
+  color: #116466;
+}
+
+.movieCard:hover {
+  color: #3C1F41;
+}
+
+.movieCard h2 {
+  font-size: 4rem;
+}
+
+.scoreCard div {
+  padding: 0 5px;
+}
+
+.scoreCard button {
+  margin: 0;
+  box-shadow: none;
 }
 
 /* col-sm */
@@ -1140,6 +1194,10 @@ nav a:hover {
     flex-wrap: wrap;
     min-width: 40rem;
     justify-content: center;
+  }
+
+  .signInUpForm {
+    min-width: 30rem;
   }
 }
 

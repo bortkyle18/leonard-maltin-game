@@ -14,8 +14,8 @@ const Score = (props) => {
       <div className="flex-row align-items-center justify-space-around text-center">
       {players.map((player) => {
         return(
-          <Card key={Math.random()}>
-            <Card.Body>
+          <Card key={Math.random()} bg="dark">
+            <Card.Body className="text-center playerCard">
               {players.length < 6 ? (
                 <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
               ) : (

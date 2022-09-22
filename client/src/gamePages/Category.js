@@ -25,27 +25,27 @@ const Category = (props) => {
       <>
         <GameNav/>
         <Score/>
-        <Card>
-            <Card.Body className="text-center">
-              <Card.Title>{currentCategory.title}</Card.Title>
-              <Card.Text>{currentCategory.description}</Card.Text>
-              {currentCategory.movies.map((movie) => {
-                return (
-                  <Link to={`${movie.id}`} key={movie.id}>
-                    <Card>
-                      <Card.Body className="text-center">
-                        <div>
-                          <Card.Title>{movie.title}</Card.Title>
-                          <p>{movie.year}</p>
-                          <p>Actors: {movie.actorList.length}</p>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                )
-              })}
-            </Card.Body>
-        </Card>
+        <div className="justify-content-center text-center selectCategoryCard">
+          <h2>{currentCategory.title}</h2>
+          <h3>{currentCategory.description}</h3>
+          <div className="flex-row justify-content-center">
+            {currentCategory.movies.map((movie) => {
+              return (
+                <Link to={`${movie.id}`} key={movie.id} className="flex-block justify-content-center align-items-center movieCard">
+                  <Card>
+                    <Card.Header><h2>{movie.year}</h2></Card.Header>
+                    <Card.Body className="text-center">
+                      <div>
+                        <p>{movie.title}</p>
+                        <p>Actors: {movie.actorList.length}</p>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
       </>
     );
   }

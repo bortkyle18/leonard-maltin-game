@@ -32,45 +32,48 @@ const Login = (props) => {
   return (
     <Container>
       <BasicNav authUser={ props.authUser }/>
-      <Form onSubmit={handleLogin}>
-        <Form.Group controlId="email">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control 
-            type="email" 
-            name="email"
-            placeholder="Enter email" 
-            value={ loginCreds.email }
-            onChange={ (e) => setLoginCreds({ ...loginCreds, [e.target.name]: e.target.value })}
-            required
-          />
-        </Form.Group>
+      <div className="flex-row justify-content-center">
+        <Form onSubmit={handleLogin} className="text-center signInUpForm">
+          <Form.Group controlId="email">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control 
+              type="email" 
+              name="email"
+              placeholder="Enter email" 
+              value={ loginCreds.email }
+              onChange={ (e) => setLoginCreds({ ...loginCreds, [e.target.name]: e.target.value })}
+              required
+            />
+          </Form.Group>
 
-        <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-            type="password" 
-            name="password"
-            placeholder="Password" 
-            value={ loginCreds.password }
-            onChange={ (e) => setLoginCreds({ ...loginCreds, [e.target.name]: e.target.value })}
-            required
-          />
-        </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
+              type="password" 
+              name="password"
+              placeholder="Password" 
+              value={ loginCreds.password }
+              onChange={ (e) => setLoginCreds({ ...loginCreds, [e.target.name]: e.target.value })}
+              required
+            />
+          </Form.Group>
+          <br/>
 
-        <Button 
-        disabled={!(loginCreds.email && loginCreds.password)}
-        id="success-btn"
-        variant="none"
-        type="submit">
-          Submit
-        </Button>
-      </Form>
-      
-      { formMessage.msg.length > 0 && (
-        <Alert variant={formMessage.type} style={{ marginTop: "2em" }}>
-          { formMessage.msg }
-        </Alert>
-      )}
+          <Button 
+          disabled={!(loginCreds.email && loginCreds.password)}
+          id="success-btn"
+          variant="none"
+          type="submit">
+            Submit
+          </Button>
+        </Form>
+        
+        { formMessage.msg.length > 0 && (
+          <Alert variant={formMessage.type} style={{ marginTop: "2em" }}>
+            { formMessage.msg }
+          </Alert>
+        )}
+      </div>
     </Container>
   )
 }

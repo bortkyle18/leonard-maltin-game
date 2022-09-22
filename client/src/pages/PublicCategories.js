@@ -26,17 +26,19 @@ const PublicCategories = (props) => {
   }
 
   return (
-    <Container style={{ paddingTop: "1em" }}>
-      <div>
-        <BasicNav authUser={ props.authUser }/>
-        <h3>{publicData.username}</h3>
+    <Container>
+      <BasicNav authUser={ props.authUser }/>
+      <div className="flex-row justify-content-center">
+        <h1 className="welcome">{publicData.username}</h1>
+      </div>
+      <div className="flex-row justify-content-center">
         {publicData.categories.map((category) => {
           return (
-            <Card key={category._id}>
-              <Link to={`../../Category/${category.id}`} className="categoryCard">
-                <Card.Body className="text-center">
-                    <Card.Title>{category.title} ({category.movies.length})</Card.Title>
-                    <Card.Text>{category.description}</Card.Text>
+            <Card key={category._id} className="cardStack">
+              <Link to={`../../Category/${category.id}`} className="categoryCard text-center">
+                <Card.Header>{category.title} ({category.movies.length})</Card.Header>
+                <Card.Body>
+                  <Card.Text>{category.description}</Card.Text>
                 </Card.Body>
               </Link>
             </Card>

@@ -42,16 +42,25 @@ const Scoreboard = (props) => {
       <div className="flex-row align-items-center justify-space-around text-center">
         {players.map((player) => {
           return(
-            <Card key={Math.random()}>
-              <Card.Body>
+            <Card key={Math.random()} bg="dark">
+              <Card.Body className="playerCard">
                 {players.length < 6 ? (
                   <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
                 ) : (
                   <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImage"/>
                 )}
-                <Card.Title>{player.player} - {player.score}</Card.Title>
-                <Button variant="none" size="lg" onClick={() => subtractFromScore(player)}>🔽</Button>
-                <Button variant="none" size="lg" onClick={() => addToScore(player)}>🔼</Button>
+                <Card.Title>{player.player}</Card.Title>
+                <div className="flex-row justify-content-center align-items-center scoreCard">
+                  <Card.Title>{player.score}</Card.Title>
+                  <div>
+                    <div>
+                    <Button variant="none" size="sm" onClick={() => addToScore(player)}>🔼</Button>
+                    </div>
+                    <div>
+                    <Button variant="none" size="sm" onClick={() => subtractFromScore(player)}>🔽</Button>
+                    </div>
+                  </div>
+                </div>
               </Card.Body>
             </Card>
           )

@@ -89,8 +89,9 @@ const Players = (props) => {
         {
           props.players.map((player) => {
           return (
-            <Card key={Math.random()}>
-              <Card.Body className="text-center">
+            <div>
+            <Card key={Math.random()} bg="dark">
+              <Card.Body className="text-center playerCard">
                 <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
                 <h4>{player.player}</h4>
                 <Button
@@ -103,6 +104,7 @@ const Players = (props) => {
                 </Button>
               </Card.Body>
             </Card>
+            </div>
           )
         })}
       </div>

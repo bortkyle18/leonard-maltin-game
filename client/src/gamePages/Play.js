@@ -15,24 +15,26 @@ const Play = (props) => {
     <>
       <GameNav/>
       <Score/>
+      <div className="flex-row justify-content-center">
       {// eslint-disable-next-line
       categories.map((category) => {
         if(category.movies.length > 0) {
           return (
-            <Link to={`${category._id}`}  key={category._id}>
-              <Card>
+            <Card className="cardStack">
+              <Link to={`${category._id}`}  key={category._id}  className="categoryCard text-center">
+                <Card.Header>{category.title} ({category.movies.length})</Card.Header>
                 <Card.Body className="text-center">
-                  <Card.Title>{category.title} ({category.movies.length})</Card.Title>
                   <Card.Text>{category.description}</Card.Text>
                 </Card.Body>
-              </Card>
-            </Link>
+              </Link>
+            </Card>
           )
         } else {
           setCategories(categories.filter((categoryList) => categoryList.id !== category._id))
         }
       })
       }
+      </div>
       {categories.length === 0 && (
         <>
           <h1>Game Over</h1>

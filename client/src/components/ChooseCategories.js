@@ -187,18 +187,20 @@ const ChooseCategories = (props) => {
         {
           props.gameCategories.map((category) => {
           return (
-            <Card key={Math.random()}>
-              <Card.Body>
-                <Card.Title>{category.title} ({category.movies.length})</Card.Title>
-                <Card.Text>{category.description}</Card.Text>
-                <Button
-                  className="btn-block"
-                  variant="danger"
-                  onClick={ () => props.setGameCategories(props.gameCategories.filter((categories) => categories._id !== category._id))}
-                >
-                  Remove Category
-                </Button>
-              </Card.Body>
+            <Card key={Math.random()} className="cardStack">
+              <div className="categoryCard text-center">
+                <Card.Header>{category.title} ({category.movies.length})</Card.Header>
+                <Card.Body>
+                  <Card.Text>{category.description}</Card.Text>
+                  <Button
+                    className="btn-block"
+                    variant="danger"
+                    onClick={ () => props.setGameCategories(props.gameCategories.filter((categories) => categories._id !== category._id))}
+                  >
+                    Remove Category
+                  </Button>
+                </Card.Body>
+              </div>
             </Card>
           )
         })}

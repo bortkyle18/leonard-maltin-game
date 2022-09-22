@@ -44,7 +44,7 @@ const Score = (props) => {
               ) : (
                 <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImage"/>
               )}
-              <Card.Title>{player.player}: {player.score}</Card.Title>
+              <Card.Title>{player.player} - {player.score}</Card.Title>
               <Button id="success-btn" variant="none" onClick={() => addToScore(player)}>Award Point</Button>
             </Card.Body>
           </Card>

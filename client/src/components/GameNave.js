@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar"
 const GameNav = (props) => {
   return (
     <Navbar expand="lg">
-      <Container>
+      <Container className='navIcon'>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
