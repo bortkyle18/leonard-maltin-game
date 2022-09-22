@@ -39,22 +39,24 @@ const Scoreboard = (props) => {
   return (
     <>
       <GameNav/>
-      {players.map((player) => {
-        return(
-          <Card key={Math.random()}>
-            <Card.Body>
-              <div>
-                <Card.Title>{player.player}</Card.Title>
-                <Card.Body>
-                  {player.score}
-                  <Button onClick={() => addToScore(player)}>🔼</Button>
-                  <Button onClick={() => subtractFromScore(player)}>🔽</Button>
-                </Card.Body>
-              </div>
-            </Card.Body>
-          </Card>
-        )
-      })}
+      <div className="flex-row align-items-center justify-space-around text-center">
+        {players.map((player) => {
+          return(
+            <Card key={Math.random()}>
+              <Card.Body>
+                {players.length < 6 ? (
+                  <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
+                ) : (
+                  <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImage"/>
+                )}
+                <Card.Title>{player.player} - {player.score}</Card.Title>
+                <Button variant="none" size="lg" onClick={() => subtractFromScore(player)}>🔽</Button>
+                <Button variant="none" size="lg" onClick={() => addToScore(player)}>🔼</Button>
+              </Card.Body>
+            </Card>
+          )
+        })}
+      </div>
     </>
   );
 };

@@ -68,14 +68,15 @@ const ChooseCategories = (props) => {
   }
 
   return (
-    <>
-      <h2>Choose categories you would like to include in this game.</h2>
+    <div className="setUpSelect">
+      <h2>Choose Categories</h2>
       {props.gameCategories.length === 1 ? (
-        <h3>You have {props.gameCategories.length} category selected for this game.</h3>
+        <p>You have {props.gameCategories.length} category selected for this game.</p>
       ) : (
-        <h3>You have {props.gameCategories.length} categories selected for this game.</h3>
+        <p>You have {props.gameCategories.length} categories selected for this game.</p>
       )}
-      <Accordion alwaysOpen>
+
+      <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Public Categories</Accordion.Header>
           <Accordion.Body className="divScroll">
@@ -178,7 +179,28 @@ const ChooseCategories = (props) => {
           )
         )}
       </Accordion>
-    </>
+      <br/>
+      <div className="flex-row align-items-center justify-space-around text-center">
+        {
+          props.gameCategories.map((category) => {
+          return (
+            <Card key={Math.random()}>
+              <Card.Body>
+                <Card.Title>{category.title} ({category.movies.length})</Card.Title>
+                <Card.Text>{category.description}</Card.Text>
+                <Button
+                  className="btn-block"
+                  variant="danger"
+                  onClick={ () => props.setGameCategories(props.gameCategories.filter((categories) => categories._id !== category._id))}
+                >
+                  Remove Category
+                </Button>
+              </Card.Body>
+            </Card>
+          )
+        })}
+      </div>
+    </div>
   );
 };
 

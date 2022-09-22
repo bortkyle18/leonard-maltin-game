@@ -34,18 +34,23 @@ const Score = (props) => {
   };
 
   return (
-    <>
+    <div className="flex-row align-items-center justify-space-around">
       {players.map((player) => {
         return(
           <Card key={Math.random()}>
-            <Card.Body>
+            <Card.Body className="text-center">
+              {players.length < 6 ? (
+                <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
+              ) : (
+                <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImage"/>
+              )}
               <Card.Title>{player.player}: {player.score}</Card.Title>
-              <Button onClick={() => addToScore(player)}>Award Point</Button>
+              <Button variant="success" onClick={() => addToScore(player)}>Award Point</Button>
             </Card.Body>
           </Card>
         )
       })}
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { Card, Button } from "react-bootstrap";
-import Accordion from 'react-bootstrap/Accordion';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Blank from '../assets/images/Blank.png'
 import FightClub from '../assets/images/FightClub.png'
 import SpaceOd from '../assets/images/SpaceOd.png'
 import KillBill from '../assets/images/KillBill.png'
@@ -9,7 +10,7 @@ import LOTR from '../assets/images/LOTR.png'
 
 const Players = (props) => {
   const [ playerInput, setPlayerInput ] = useState("")
-  const [ imageInput, setImageInput ] = useState({value: "", image: ""})
+  const [ imageInput, setImageInput ] = useState({value: "", image: Blank})
 
   const movieImages = [
     { value: 'FightClub', image: FightClub },
@@ -30,76 +31,80 @@ const Players = (props) => {
     props.setPlayers([...props.players, playerToSave])
 
     setPlayerInput("")
-    setImageInput({value: "", image: ""})
+    setImageInput({value: "", image: Blank})
   }
 
   return (
-    <>
+    <div className="setUpSelect">
+      <h3>Add Players</h3>
+
+      <div className="flex-row">
+        <Dropdown>
+          <Dropdown.Toggle variant="none" id="dropdown-basic">
+            <img src={imageInput.image} alt={imageInput.value} className="playerImage"/>
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item className="flex-row">
+              {movieImages.map((movieImage) => {
+                return (
+                    <Button
+                      className="btn-block"
+                      variant="none"
+                      onClick={ () => setImageInput({value: movieImage.value, image: movieImage.image})}
+                    >
+                      <img src={movieImage.image} alt={movieImage.value} className="playerImage"/>
+                    </Button>
+                );
+              })}
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <Form onSubmit={handleSavePlayer} className="flex-row align-items-center justify-space-around col-10">
+          <div className="col-9">
+              <Form.Control
+                name="playerInput"
+                value={playerInput}
+                onChange={(e) => setPlayerInput(e.target.value)}
+                type="text"
+                size="lg"
+                placeholder="Enter Player Name"
+                required
+              />
+          </div>
+          <div>
+            <Button type="submit" variant="success" size="lg"
+              disabled={!playerInput}>
+              Save Player
+            </Button>
+          </div>
+        </Form>
+      </div>
+      
       {props.players.length > 0 && (
         <h3>Players:</h3>
       )}
-      <div className="flex-row">
-      {
-        props.players.map((player) => {
-        return (
-          <Card key={Math.random()}>
-            <Card.Body className="text-center">
-              <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImage"/>
-              <h4>{player.player}</h4>
-              <Button
-                className="btn-block"
-                variant="danger"
-                size="sm"
-                onClick={ () => props.setPlayers(props.players.filter((players) => players !== player))}
-              >
-                Remove Player
-              </Button>
-            </Card.Body>
-          </Card>
-        )
-      })}
+      <div className="flex-row align-items-center justify-space-around">
+        {
+          props.players.map((player) => {
+          return (
+            <Card key={Math.random()}>
+              <Card.Body className="text-center">
+                <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
+                <h4>{player.player}</h4>
+                <Button
+                  className="btn-block"
+                  variant="danger"
+                  size="sm"
+                  onClick={ () => props.setPlayers(props.players.filter((players) => players !== player))}
+                >
+                  Remove Player
+                </Button>
+              </Card.Body>
+            </Card>
+          )
+        })}
       </div>
-
-      <h3>Add Players Below</h3>
-      <Form onSubmit={handleSavePlayer}>
-        <Form.Control
-          name="playerInput"
-          value={playerInput}
-          onChange={(e) => setPlayerInput(e.target.value)}
-          type="text"
-          size="lg"
-          placeholder="Enter Player Name"
-          required
-        />
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Icon Selected: 
-              {imageInput.value.length > 0 && <img src={imageInput.image} alt={imageInput.value} className="playerImage"/>}
-            </Accordion.Header>
-            <Accordion.Body className="flex-row">
-              {movieImages.map((movieImage) => {
-                return (
-                  <Card key={movieImage._id}>
-                    <img src={movieImage.image} alt={movieImage.value} className="playerImage"/>
-                    <Button
-                      className="btn-block"
-                      variant="success"
-                      onClick={ () => setImageInput({value: movieImage.value, image: movieImage.image})}
-                    >
-                      Select Icon
-                    </Button>
-                  </Card>
-                );
-              })}
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-        <Button type="submit" variant="success" size="sm"
-          disabled={!playerInput}>
-          Save Player
-        </Button>
-      </Form>
-    </>
+    </div>
   );
 };
 

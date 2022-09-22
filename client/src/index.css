@@ -1282,7 +1282,33 @@ nav a:hover {
 }
 
 .playerImage {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
+  border-style: solid;
+  border-width: 1px;
   border-radius: 100px;
+}
+
+.playerImageAdded {
+  width: 150px;
+  height: 150px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 100px;
+}
+
+.startGameButton {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+}
+
+.setUpTitle {
+  margin-top: 80px;
+  font-size: 60px;
+  text-align: center;
+}
+
+.setUpSelect {
+  min-height: 20rem;
 }
