@@ -89,7 +89,8 @@ const ChooseCategories = (props) => {
                     {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
                       <Button
                         className="btn-block"
-                        variant="success"
+                        id="success-btn"
+                        variant="none"
                         onClick={ () => props.setGameCategories([...props.gameCategories, category])}
                       >
                         Add Category
@@ -121,7 +122,8 @@ const ChooseCategories = (props) => {
                       {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
                         <Button
                           className="btn-block"
-                          variant="success"
+                          id="success-btn"
+                          variant="none"
                           onClick={ () => props.setGameCategories([...props.gameCategories, category])}
                         >
                           Add Category
@@ -156,7 +158,8 @@ const ChooseCategories = (props) => {
                           {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
                             <Button
                               className="btn-block"
-                              variant="success"
+                              id="success-btn"
+                              variant="none"
                               onClick={ () => props.setGameCategories([...props.gameCategories, category])}
                             >
                               Add Category

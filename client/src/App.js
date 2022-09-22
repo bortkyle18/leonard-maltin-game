@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div>
-      <Container>
+      <>
         <Router>
           <Routes>
             <Route path="/" element={<Home authUser={ authUser } />} />
@@ -87,7 +87,7 @@ function App() {
             <Route path="*" element={<PageNotFound authUser={ authUser } />} />
           </Routes>
         </Router>
-      </Container>
+      </>
       <Footer />
     </div>
   );

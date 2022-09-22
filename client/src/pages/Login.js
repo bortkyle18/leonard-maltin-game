@@ -59,7 +59,8 @@ const Login = (props) => {
 
         <Button 
         disabled={!(loginCreds.email && loginCreds.password)}
-        variant="success" 
+        id="success-btn"
+        variant="none"
         type="submit">
           Submit
         </Button>

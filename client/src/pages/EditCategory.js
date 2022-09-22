@@ -230,7 +230,7 @@ const EditCategory = (props) => {
             </Row>
           </Container>
           {categoryInput.length > 0 && descriptionInput.length > 0 && savedMovies.length > 0 && (
-          <Button type="submit" variant="success" size="lg">
+          <Button type="submit" id="success-btn" variant="none" size="lg">
             Update Category
           </Button>
           )}
@@ -256,7 +256,7 @@ const EditCategory = (props) => {
             required
           />
 
-          <Button type="submit" variant="success" size="lg"
+          <Button type="submit" id="success-btn" variant="none" size="lg"
             disabled={!movieSearchInput}>
             Submit Search
           </Button>

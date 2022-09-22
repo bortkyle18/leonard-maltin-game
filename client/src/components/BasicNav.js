@@ -6,10 +6,10 @@ import auth from "../utils/auth"
 const BasicNav = (props) => {
   return (
     <Navbar expand="lg">
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+      <Container className='navIcon'>
+        <Navbar.Toggle/>
+        <Navbar.Collapse>
+          <Nav className="ml-auto flex-row">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/HowToPlay">How To Play</Nav.Link>
             {/* if user is... */}
@@ -19,7 +19,7 @@ const BasicNav = (props) => {
                 <Nav.Link href='/Profile'>My Profile</Nav.Link>
                 <Nav.Link href="/PublicCategories">Public Categories</Nav.Link>
                 <Nav.Link href='/CreateCategory'>Create a Category</Nav.Link>
-                <Nav.Link onClick={auth.logout}>Logout</Nav.Link>
+                <Nav.Link onClick={auth.logout} href="/">Logout</Nav.Link>
               </>) : (
                 // not logged in show
                 <>

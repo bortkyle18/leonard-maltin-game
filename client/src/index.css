@@ -34,6 +34,14 @@ body {
   background-color: #f3fffee1;
 }
 
+.body {
+  background-color: black;
+  background-image: url("./assets/images/Film\ and\ Theater\ Presentation.png");
+  background-size: 100rem;
+  background-position-x: -15rem;
+  color: white;
+}
+
 h1,
 h2,
 h3,
@@ -79,7 +87,6 @@ p {
 }
 
 a {
-  color: var(--dark);
   text-decoration: none;
 }
 
@@ -99,8 +106,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  color: white;
 }
 
 .page-title {
@@ -896,8 +902,154 @@ nav a:hover {
   flex: 0 0 100%;
 }
 
+.divScroll {
+  height: 25rem;
+  overflow: auto;
+  text-align: justify;
+}
+
+.actorScroll {
+  height: 29rem;
+  overflow: auto;
+}
+
+.actorList {
+  height: fit-content;
+  display: inline-flex;
+  overflow: auto;
+}
+
+.actorCard {
+  min-height: 10rem;
+  width: 18rem;
+  margin: 1rem;
+}
+
+.actorImage {
+  height: 20rem;
+  max-width: 15rem;
+  min-width: 10rem;
+}
+
+.playerImage {
+  width: 80px;
+  height: 80px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 100px;
+}
+
+.playerImageAdded {
+  width: 150px;
+  height: 150px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 100px;
+}
+
+.startGameButton {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+}
+
+.setUpTitle {
+  margin-top: 80px;
+  font-size: 60px;
+  text-align: center;
+}
+
+.setUpSelect {
+  min-height: 20rem;
+}
+
+.howToPlay {
+  background-color: rgba(255,255,255,.8);
+  border-radius: 30px;
+  padding: 10px 10px;
+}
+
+.howToPlay h1 {
+  text-align: center;
+  justify-content: center;
+  color: #116466;
+  text-shadow:
+    0 1px 0 rgba(0,0,0),
+    0 2px 0 rgba(0,0,0),
+    0 10px 10px rgba(0,0,0,.25);
+}
+
+.howToPlay p {
+  color: #116466;
+  font-size: 25px;
+}
+
+.navIcon button {
+  background-color: #116466;
+}
+
+.navIcon {
+  font-style: none;
+  font-size: large;
+  color: white;
+  text-shadow:
+    0 1px 0 rgba(0,0,0),
+    0 2px 0 rgba(0,0,0),
+    0 10px 10px rgba(0,0,0,.25);
+}
+
+.navIcon a:hover {
+  color: white;
+  text-shadow:
+    0 1px 0 rgba(0,0,0),
+    0 2px 0 rgba(0,0,0),
+    0 10px 10px rgba(0,0,0,.25);
+}
+
+.btn {
+  box-shadow:
+    0 10px 10px rgba(0,0,0,.25)
+}
+
+.categoryCard {
+  text-decoration: none;
+  color: #116466;
+}
+
+.welcome {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 0 rgba(0,0,0), 
+  0 2px 0 rgba(0,0,0),
+  0 10px 10px rgba(0,0,0,.25),
+  0 15px 10px rgba(0,0,0,.2),
+  0 25px 20px rgba(0,0,0,.15);
+}
+
+#success-btn {
+  background-color: #116466;
+}
+
+.appContainer {
+  margin: 0;
+}
+
+.iconSelect {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 14rem;
+  justify-content: center;
+}
+
 /* col-sm */
 @media screen and (min-width: 640px) {
+  .body {
+    background-size: cover;
+    background-position-x: 0;
+  }
+
   .col-sm-auto {
     flex-grow: 1;
     flex-basis: 0;
@@ -981,6 +1133,13 @@ nav a:hover {
 
   .align-center-sm {
     align-items: center;
+  }
+
+  .iconSelect {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 40rem;
+    justify-content: center;
   }
 }
 
@@ -1250,65 +1409,4 @@ nav a:hover {
   .align-center-xl {
     align-items: center;
   }
-}
-
-.divScroll {
-  height: 25rem;
-  overflow: auto;
-  text-align: justify;
-}
-
-.actorScroll {
-  height: 29rem;
-  overflow: auto;
-}
-
-.actorList {
-  height: fit-content;
-  display: inline-flex;
-  overflow: auto;
-}
-
-.actorCard {
-  min-height: 10rem;
-  width: 18rem;
-  margin: 1rem;
-}
-
-.actorImage {
-  height: 20rem;
-  max-width: 15rem;
-  min-width: 10rem;
-}
-
-.playerImage {
-  width: 80px;
-  height: 80px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 100px;
-}
-
-.playerImageAdded {
-  width: 150px;
-  height: 150px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 100px;
-}
-
-.startGameButton {
-  position: fixed;
-  top: 20px;
-  right: 50px;
-}
-
-.setUpTitle {
-  margin-top: 80px;
-  font-size: 60px;
-  text-align: center;
-}
-
-.setUpSelect {
-  min-height: 20rem;
 }

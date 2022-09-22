@@ -103,7 +103,7 @@ const Friends = (props) => {
           required
         />
 
-        <Button type="submit" variant="success" size="lg"
+        <Button type="submit" size="lg"
           disabled={!friendSearch}>
           Find Friend
         </Button>
@@ -126,7 +126,8 @@ const Friends = (props) => {
           </Link>
           <Button
             className="btn-block"
-            variant="success"
+            id="success-btn"
+            variant="none"
             onClick={() => handleAddFriend(friendData)}
             >
               Add Friend

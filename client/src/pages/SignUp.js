@@ -62,7 +62,7 @@ const SignUp = (props) => {
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show success alert if server response is ok */}
-        <Alert dismissible onClose={() => setShowSuccessAlert(false)} show={showSuccessAlert} variant='success'>
+        <Alert dismissible onClose={() => setShowSuccessAlert(false)} show={showSuccessAlert}>
           Sign Up successful. I think this is the beginning of a beautiful friendship. - Casablanca (1942)
           <br />
           <br />
@@ -127,7 +127,8 @@ const SignUp = (props) => {
         <Button
           disabled={!(userFormData.pname && userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
-          variant='success'>
+          id="success-btn"
+          variant="none">
           Submit
         </Button>
       </Form>

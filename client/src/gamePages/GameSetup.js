@@ -27,7 +27,7 @@ const GameStart = (props) => {
   return (
     <>
       <div className="startGameButton">
-        <Button className="btn-block" variant="success" size="lg" href="/Play"
+        <Button className="btn-block" id="success-btn" variant="none" size="lg" href="/Play"
           disabled={(players.length < 2 || gameCategories.length < 1)}> 
           Start Game
         </Button>
@@ -48,11 +48,11 @@ const GameStart = (props) => {
         </div>
         <div>
           {playerSelect ? (
-            <Button variant="success" size="lg" onClick={() => setPlayerSelect(false)}>
+            <Button id="success-btn" variant="none" size="lg" onClick={() => setPlayerSelect(false)}>
               Choose Categories
             </Button> 
             ) : (
-            <Button variant="success" size="lg" onClick={() => setPlayerSelect(true)}>
+            <Button id="success-btn" variant="none" size="lg" onClick={() => setPlayerSelect(true)}>
               Add/Remove Players
             </Button> 
           )}

@@ -215,7 +215,7 @@ const CreateCategory = (props) => {
             </Container>
           )}
           {categoryInput.length > 0 && descriptionInput.length > 0 && savedMovies.length > 0 && (
-          <Button type="submit" variant="success" size="lg">
+          <Button type="submit" id="success-btn" variant="none" size="lg">
             Save Category
           </Button>
           )}
@@ -241,7 +241,7 @@ const CreateCategory = (props) => {
             required
           />
 
-          <Button type="submit" variant="success" size="lg"
+          <Button type="submit" id="success-btn" variant="none" size="lg"
             disabled={!movieSearchInput}>
             Submit Search
           </Button>

@@ -38,13 +38,14 @@ const Players = (props) => {
     <div className="setUpSelect">
       <h3>Add Players</h3>
 
-      <div className="flex-row">
+      <div className="flex-row justify-space-around">
         <Dropdown>
           <Dropdown.Toggle variant="none" id="dropdown-basic">
             <img src={imageInput.image} alt={imageInput.value} className="playerImage"/>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item className="flex-row">
+            <Dropdown.Item>
+              <div className="iconSelect">
               {movieImages.map((movieImage) => {
                 return (
                     <Button
@@ -56,6 +57,7 @@ const Players = (props) => {
                     </Button>
                 );
               })}
+              </div>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -72,7 +74,7 @@ const Players = (props) => {
               />
           </div>
           <div>
-            <Button type="submit" variant="success" size="lg"
+            <Button type="submit" id="success-btn" variant="none" size="lg"
               disabled={!playerInput}>
               Save Player
             </Button>

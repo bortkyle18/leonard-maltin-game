@@ -33,7 +33,7 @@ const PublicCategories = (props) => {
         {publicData.categories.map((category) => {
           return (
             <Card key={category._id}>
-              <Link to={`../../Category/${category.id}`}>
+              <Link to={`../../Category/${category.id}`} className="categoryCard">
                 <Card.Body className="text-center">
                     <Card.Title>{category.title} ({category.movies.length})</Card.Title>
                     <Card.Text>{category.description}</Card.Text>
