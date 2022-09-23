@@ -910,10 +910,41 @@ nav a:hover {
   overflow: auto;
 }
 
+.reviewScroll {
+  height: 18rem;
+  overflow: auto;
+}
+
+.additionalInfoScroll {
+  height: 10rem;
+  overflow: auto;
+}
+
+.additionalInfoCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 .5rem .5rem 2rem;
+  padding: 1rem;
+  color: white;
+  align-items: baseline;
+  background-color: #116466;
+  border-radius: 1rem;
+}
+
+.additionalInfoList {
+  margin: .6rem;
+  padding: .3rem;
+  font-size: .9rem;
+  border: 2px solid white;
+  border-radius: .5rem;
+}
+
 .actorList {
   height: fit-content;
   display: inline-flex;
   overflow: auto;
+  text-align: center;
 }
 
 .actorCard {
@@ -937,8 +968,8 @@ nav a:hover {
 }
 
 .playerImageAdded {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-style: solid;
   border-width: 1px;
   border-radius: 100px;
@@ -1053,6 +1084,12 @@ nav a:hover {
 }
 
 .playerCard {
+  max-height: 13rem;
+  border-radius: var(--border-radius);
+  background-color: #3C1F41
+}
+
+.playerScoreCard {
   border-radius: var(--border-radius);
   background-color: #3C1F41
 }
@@ -1143,6 +1180,121 @@ nav a:hover {
 
 .scoreSize {
   font-size: 3.5rem;
+}
+
+.movieInfo {
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 2rem;
+}
+
+.movieInfoCard {
+  margin-top: 1rem;
+}
+
+.movieCardHeader {
+  text-decoration: none;
+  font-size: 3rem;
+  color: #116466;
+  text-shadow: 0 1px 0 rgba(0,0,0), 
+  0 2px 0 rgba(0,0,0),
+  0 10px 10px rgba(0,0,0,.25),
+  0 15px 10px rgba(0,0,0,.2),
+  0 25px 20px rgba(0,0,0,.15);
+}
+
+.movieCardHeader h4 {
+  text-decoration: none;
+  color: #116466;
+  text-shadow: 0 1px 0 rgba(0,0,0), 
+  0 2px 0 rgba(0,0,0),
+  0 10px 10px rgba(0,0,0,.25),
+  0 15px 10px rgba(0,0,0,.2),
+  0 25px 20px rgba(0,0,0,.15);
+  padding-bottom: 1rem;
+  border-bottom: 3px solid grey;
+}
+
+.movieCardHeader:hover {
+  color: gray;
+}
+
+.movieCardHeader:hover h4 {
+  color: gray;
+}
+
+.movieTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.goodMovie {
+  color: black;
+  padding: .5rem;
+  background-color: green;
+}
+
+.okayMovie {
+  color: black;
+  padding: .5rem;
+  background-color: yellow;
+}
+
+.badMovie {
+  color: black;
+  padding: .5rem;
+  background-color: red;
+}
+
+.movieTitle p {
+  padding-left: 2rem;
+  color: gray;
+}
+
+.genreCard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movieGenre {
+  margin: 0 1rem 1rem 1rem;
+  padding: .5rem;
+  border: 2px solid #116466;
+}
+
+.movieYear {
+  display: flex;
+  flex-wrap: wrap;
+  color: grey;
+  padding-bottom: 1rem;
+}
+
+.movieYear h4 {
+  padding-right: 3rem;
+}
+
+.movieWriter p {
+  margin: 1rem;
+}
+
+.movieDescription p {
+  margin: 0 0 0 1rem;
+}
+
+.reviewCard {
+  min-height: 10rem;
+  width: 13rem;
+  margin: 1rem;
+}
+
+.reviewCard h2 {
+  font-size: 1.5rem;
+}
+
+.reviewCard p {
+  font-size: .75rem;
 }
 
 /* col-sm */

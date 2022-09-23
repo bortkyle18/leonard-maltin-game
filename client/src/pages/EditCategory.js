@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
-import { Form, Button, Row, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert } from "react-bootstrap";
 import Container from "react-bootstrap/Container"
 import BasicNav from "../components/BasicNav";
 import auth from "../utils/auth"
@@ -175,92 +175,104 @@ const EditCategory = (props) => {
     return (
       <>
         <BasicNav authUser={ props.authUser }/>
-        <Form onSubmit={handleUpdateCategory} className="text-center">
-          <Form.Control
-            name="categoryInput"
-            value={categoryInput}
-            onChange={(e) => setCategoryInput(e.target.value)}
-            type="text"
-            size="lg"
-            placeholder="Category Name (puns are encouraged)"
-          />
+        <div className="flex-row justify-content-center">
+          <div className="welcome text-center">
+            <h1>Edit A Category</h1>
+          </div>
+        </div>
+        <div className="createCategory">
+          <Form onSubmit={handleUpdateCategory} className="flex-row justify-content-center">
+            <Form.Control
+              className="createCategoryForm"
+              name="categoryInput"
+              value={categoryInput}
+              onChange={(e) => setCategoryInput(e.target.value)}
+              type="text"
+              size="lg"
+              placeholder="Category Name (puns are encouraged)"
+            />
 
-          <Form.Control
-            name="descriptionInput"
-            value={descriptionInput}
-            onChange={(e) => setDescriptionInput(e.target.value)}
-            type="text"
-            size="lg"
-            placeholder="Category Description"
-          />
+            <Form.Control
+              className="createCategoryForm"
+              name="descriptionInput"
+              value={descriptionInput}
+              onChange={(e) => setDescriptionInput(e.target.value)}
+              type="text"
+              size="lg"
+              placeholder="Category Description"
+            />
 
-        <Container>
-            <p>
-              {savedMovies.length < 2 ? `You have ${savedMovies.length} movie in: ${categoryInput}`: `You have ${savedMovies.length} movies in: ${categoryInput}`}
-            </p>
-            <Row xs={3} md={5} >
-              {savedMovies.map((movie) => {
-                return (
-                  <Card key={movie.id}>
-                    <Card.Body className="text-center" style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                      <div>
-                        <Card.Title>{movie.title}</Card.Title>
-                        {movie.image ? (
-                          <Card.Img
-                            src={movie.image}
-                            alt={`The poster for ${movie.title}`}
-                            variant="top"
-                          />
-                        ) : null}
-                        <p>{movie.year}</p>
-                      </div>
-                      <div className="text-center">
-                        <Button
-                          className="btn-block"
-                          variant="danger"
-                          onClick={() => handleDeleteMovieFromCategory(movie)}
-                        >
-                          Delete from Category
-                        </Button>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-            </Row>
-          </Container>
-          {categoryInput.length > 0 && descriptionInput.length > 0 && savedMovies.length > 0 && (
-          <Button type="submit" id="success-btn" variant="none" size="lg">
-            Update Category
-          </Button>
-          )}
-          {saveMessage.msg.length > 0 && (
-            <Alert
-              variant={saveMessage.type}
-              style={{ marginTop: "2em" }}
-            >
-              {saveMessage.msg}
-            </Alert>
-          )}
-        </Form>
 
-        <Form onSubmit={handleMovieSearchSubmit}>
-          <p>Search and Add Movies to Your Category</p>
-          <Form.Control
-            name="movieSearchInput"
-            value={movieSearchInput}
-            onChange={(e) => setMovieSearchInput(e.target.value)}
-            type="text"
-            size="lg"
-            placeholder="Search for a movie"
-            required
-          />
+          {savedMovies.length !== 0 && (
+            <Container>
+                <p className="text-center">
+                  {savedMovies.length < 2 ? `You have ${savedMovies.length} movie in: ${categoryInput}`: `You have ${savedMovies.length} movies in: ${categoryInput}`}
+                </p>
+                <div className="flex-row justify-content-center">
+                  {savedMovies.map((movie) => {
+                    return (
+                      <Card key={movie.id} className="addedMovieCard">
+                        <Card.Body className="text-center" style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                          <div>
+                            <Card.Title>{movie.title}</Card.Title>
+                            {movie.image ? (
+                              <Card.Img
+                                src={movie.image}
+                                alt={`The poster for ${movie.title}`}
+                                variant="top"
+                              />
+                            ) : null}
+                            <p>{movie.year}</p>
+                          </div>
+                          <div className="text-center">
+                            <Button
+                              className="btn-block"
+                              variant="danger"
+                              onClick={() => handleDeleteMovieFromCategory(movie)}
+                            >
+                              Delete from Category
+                            </Button>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </Container>
+            )}
+            {categoryInput.length > 0 && descriptionInput.length > 0 && savedMovies.length > 0 && (
+            <Button type="submit" id="success-btn" variant="none" size="lg">
+              Save Category
+            </Button>
+            )}
+            {saveMessage.msg.length > 0 && (
+              <Alert
+                variant={saveMessage.type}
+                style={{ marginTop: "2em" }}
+              >
+                {saveMessage.msg}
+              </Alert>
+            )}
+          </Form>
 
-          <Button type="submit" id="success-btn" variant="none" size="lg"
-            disabled={!movieSearchInput}>
-            Submit Search
-          </Button>
-        </Form>
+          <Form onSubmit={handleMovieSearchSubmit}>
+            <p>Search and Add Movies to Your Category</p>
+            <Form.Control
+              name="movieSearchInput"
+              value={movieSearchInput}
+              onChange={(e) => setMovieSearchInput(e.target.value)}
+              type="text"
+              size="lg"
+              placeholder="Search for a movie"
+              required
+            />
+
+            <Button type="submit" id="success-btn" variant="none" size="lg"
+              disabled={!movieSearchInput}>
+              Submit Search
+            </Button>
+          </Form>
+        </div>
 
         
 
@@ -270,12 +282,11 @@ const EditCategory = (props) => {
               {loadingMessage}
             </p>
           )}
-          <Row xs={3} md={4} >
+          <div className="flex-row justify-content-center">
             {moviesFound.map((movie) => {
               return (
-                <Card key={movie.id}>
-                  <Card.Body className="text-center" style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                    <div>
+                  <Card key={movie.id} className="addedMovieCard">
+                    <Card.Body className="text-center" style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                       <Card.Title>{movie.title}</Card.Title>
                       {movie.image ? (
                         <Card.Img
@@ -285,8 +296,6 @@ const EditCategory = (props) => {
                         />
                       ) : null}
                       <p>{movie.year.replace("(", "").replace(")", "")}</p>
-                    </div>
-                    <div className="text-center">
                       <Button
                         className="btn-block"
                         variant="danger"
@@ -294,12 +303,11 @@ const EditCategory = (props) => {
                       >
                         Save to Category
                       </Button>
-                    </div>
-                  </Card.Body>
-                </Card>
+                    </Card.Body>
+                  </Card>
               );
             })}
-          </Row>
+          </div>
         </Container>
       </>
     )

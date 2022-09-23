@@ -9,6 +9,9 @@ const Friends = (props) => {
   const [addFriendMessage, setAddFriendMessage] = useState({ type: "", msg: "" });
   const [removeFriendMessage, setRemoveFriendMessage] = useState({ type: "", msg: "" });
 
+  const user = props.authUser
+  console.log(user)
+
   const handleFindFriend = async (event) => {
     event.preventDefault();
 
@@ -26,7 +29,7 @@ const Friends = (props) => {
     };
 
     setAddFriendMessage({ type: "", msg: "" });
-    const addFriend = await fetch(`../api/user/${props.user._id}/${friend._id}`, {
+    const addFriend = await fetch(`../api/user/${user.userId}/${friend._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(friendDataToSave),
@@ -67,7 +70,7 @@ const Friends = (props) => {
             <div className='flex-row justify-content-center categoryCard text-center'>
               {friendList.length > 0 && (
                 <>
-                  <Link to={`../Profile/${friend.username}`}  className='friendFound'>
+                  <Link to={`../../Profile/${friend.username}`}  className='friendFound'>
                     <Card.Title>{friend.username}</Card.Title>
                   </Link>
                   <Button

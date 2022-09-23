@@ -23,27 +23,29 @@ const ViewCategory = (props) => {
     return (
       <>
         <BasicNav authUser={ props.authUser }/>
-        <Card>
-          <Card.Body className="text-center">
-            <Card.Title>{categoryData.title}</Card.Title>
-            <Card.Text>{categoryData.description}</Card.Text>
+        <div className="justify-content-center text-center selectCategoryCard">
+          <h2>{categoryData.title}</h2>
+          <h3>{categoryData.description}</h3>
+          <div className="flex-row justify-content-center">
             {categoryData.movies.map((movie) => {
               return (
-                <Link to={`${movie.id}`} key={movie.id}>
+                <Link to={`${movie.id}`} key={movie.id} className="flex-block justify-content-center align-items-center movieCard">
                   <Card>
+                    <Card.Header>
+                      <h2>{movie.year}</h2>
+                      <p>{movie.actorList.length} Actors Listed</p>
+                    </Card.Header>
                     <Card.Body className="text-center">
                       <div>
-                        <Card.Title>{movie.title}</Card.Title>
-                        <p>{movie.year}</p>
-                        <p>Actors: {movie.actorList.length}</p>
+                        <p>{movie.title}</p>
                       </div>
                     </Card.Body>
                   </Card>
                 </Link>
               )
             })}
-          </Card.Body>
-        </Card>
+          </div>
+        </div>
       </>
     );
   }

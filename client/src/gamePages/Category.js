@@ -33,11 +33,13 @@ const Category = (props) => {
               return (
                 <Link to={`${movie.id}`} key={movie.id} className="flex-block justify-content-center align-items-center movieCard">
                   <Card>
-                    <Card.Header><h2>{movie.year}</h2></Card.Header>
+                    <Card.Header>
+                      <h2>{movie.year}</h2>
+                      <p>{movie.actorList.length} Actors Listed</p>
+                      </Card.Header>
                     <Card.Body className="text-center">
                       <div>
                         <p>{movie.title}</p>
-                        <p>Actors: {movie.actorList.length}</p>
                       </div>
                     </Card.Body>
                   </Card>

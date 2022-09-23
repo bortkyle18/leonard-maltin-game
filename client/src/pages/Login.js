@@ -32,6 +32,11 @@ const Login = (props) => {
   return (
     <Container>
       <BasicNav authUser={ props.authUser }/>
+      { formMessage.msg.length > 0 && (
+        <Alert variant={formMessage.type} style={{ marginTop: "2em" }}>
+          { formMessage.msg }
+        </Alert>
+      )}
       <div className="flex-row justify-content-center">
         <Form onSubmit={handleLogin} className="text-center signInUpForm">
           <Form.Group controlId="email">
@@ -67,12 +72,6 @@ const Login = (props) => {
             Submit
           </Button>
         </Form>
-        
-        { formMessage.msg.length > 0 && (
-          <Alert variant={formMessage.type} style={{ marginTop: "2em" }}>
-            { formMessage.msg }
-          </Alert>
-        )}
       </div>
     </Container>
   )

@@ -21,7 +21,6 @@ import Scoreboard from "./gamePages/Scoreboard"
 import Category from "./gamePages/Category"
 import Movie from "./gamePages/Movie"
 
-import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   const [ authUser, setAuthUser ] = useState(null)

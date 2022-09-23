@@ -139,7 +139,7 @@ const User = (props) => {
               <div className="flex-row justify-content-center">
                 <h1 className="welcome">Friends</h1>
               </div>
-              <Friends user={profileData}/>
+              <Friends user={profileData} authUser={props.authUser}/>
             </div>
           </div>
         </div>

@@ -43,7 +43,7 @@ const Scoreboard = (props) => {
         {players.map((player) => {
           return(
             <Card key={Math.random()} bg="dark">
-              <Card.Body className="playerCard">
+              <Card.Body className="playerScoreCard">
                 {players.length < 6 ? (
                   <img src={player.playerImage.image} alt={player.playerImage.value} className="playerImageAdded"/>
                 ) : (

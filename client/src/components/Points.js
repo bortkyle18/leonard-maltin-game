@@ -4,9 +4,10 @@ import { Card, Button } from "react-bootstrap";
 const Score = (props) => {
   const [ gameCategories, setGameCategories ] = useState([])
   const [ players, setPlayers ] = useState([])
-  const oldCategories = gameCategories.filter((category) => category.id !== props.categoryData.id)
-  const currentCategory = gameCategories.filter((category) => category.id === props.categoryData.id)
+  const oldCategories = gameCategories.filter((category) => category.id !== props.currentCategory.id)
+  const currentCategory = gameCategories.filter((category) => category.id === props.currentCategory.id)
 
+  console.log(props.categoryData)
   useEffect(() => {
     setGameCategories(JSON.parse(localStorage.getItem('gameCategories')));
   }, []);

@@ -59,20 +59,20 @@ const SignUp = (props) => {
   return (
     <>
       <BasicNav authUser={ props.authUser }/>
+      {/* show success alert if server response is ok */}
+      <Alert dismissible onClose={() => setShowSuccessAlert(false)} show={showSuccessAlert}>
+        Sign Up successful. I think this is the beginning of a beautiful friendship. - Casablanca (1942)
+        <br />
+        <br />
+        Please navigate to the Login page to login.
+      </Alert>
+      {/* show error alert if server response is bad */}
+      <Alert dismissible onClose={() => setShowErrorAlert(false)} show={showErrorAlert} variant='danger'>
+        Sign Up Failed. Surely, you can't be serious? I am serious. and don't call me Shirley. - Airplane (1980)
+      </Alert>
       {/* This is needed for the validation functionality above */}
       <div className="flex-row justify-content-center">
         <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="text-center signInUpForm">
-          {/* show success alert if server response is ok */}
-          <Alert dismissible onClose={() => setShowSuccessAlert(false)} show={showSuccessAlert}>
-            Sign Up successful. I think this is the beginning of a beautiful friendship. - Casablanca (1942)
-            <br />
-            <br />
-            Please navigate to the Login page to login.
-          </Alert>
-          {/* show error alert if server response is bad */}
-          <Alert dismissible onClose={() => setShowErrorAlert(false)} show={showErrorAlert} variant='danger'>
-            Sign Up Failed. Surely, you can't be serious? I am serious. and don't call me Shirley. - Airplane (1980)
-          </Alert>
 
           <Form.Group>
             <Form.Label htmlFor='pname'>Preferred Name</Form.Label>
