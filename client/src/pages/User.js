@@ -84,48 +84,64 @@ const User = (props) => {
         </div>
       ) : (
         <div>
-          <h3>{profileData.username}</h3>
-          {deleteMessage.msg.length > 0 && (
-            <Alert
-              variant={deleteMessage.type}
-              style={{ marginTop: "2em" }}
-            >
-              {deleteMessage.msg}
-            </Alert>
-          )}
-          {profileData.categories.map((category) => {
-            return (
-              <Card key={category._id}>
-                <Link to={`../../Category/${category.id}`}>
-                  <Card.Body className="text-center">
-                      <Card.Title>{category.title} ({category.movies.length})</Card.Title>
-                      <Card.Text>{category.description}</Card.Text>
-                  </Card.Body>
-                </Link>
-                {auth.getProfile().username === profileData.username && (
-                  <>
-                    <Button
-                      className="btn-block"
-                      variant="warning"
-                      href={`/EditCategory/${category._id}`}
-                      >
-                        Edit Category
-                    </Button>
-                    <Button
-                      className="btn-block"
-                      variant="danger"
-                      onClick={() => handleCategoryDelete(category._id)}
-                      >
-                        Delete Category
-                    </Button>
-                  </>
-                )}
-              </Card>
-            );
-          })}
-          <Card>
-            <Friends user={profileData}/>
-          </Card>
+          <div className="flex-row justify-content-center">
+            <h1 className="welcome">{profileData.username}'s Profile</h1>
+          </div>
+          <div className="flex-row">
+            <div className="flex-box col-8 profileCategories">
+              <div className="flex-row justify-content-center">
+                <h1 className="welcome">Categories</h1>
+              </div>
+              {deleteMessage.msg.length > 0 && (
+                <Alert
+                  variant={deleteMessage.type}
+                  style={{ marginTop: "2em" }}
+                >
+                  {deleteMessage.msg}
+                </Alert>
+              )}
+              <div className="flex-row justify-content-center">
+                {profileData.categories.map((category) => {
+                  return (
+                    <Card key={category._id} className="cardStack flex-row">
+                      <div  className="categoryCard text-center">
+                        <Link to={`../../Category/${category.id}`} className="categoryCard">
+                          <Card.Header>{category.title} ({category.movies.length})</Card.Header>
+                          <Card.Body className="text-center">
+                              <Card.Text>{category.description}</Card.Text>
+                          </Card.Body>
+                        </Link>
+                        {auth.getProfile().username === profileData.username && (
+                          <div className="categoryCard flex-row justify-content-center">
+                            <Button
+                              className="btn-block"
+                              variant="warning"
+                              href={`/EditCategory/${category._id}`}
+                              >
+                                Edit Category
+                            </Button>
+                            <Button
+                              className="btn-block"
+                              variant="danger"
+                              onClick={() => handleCategoryDelete(category._id)}
+                              >
+                                Delete Category
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="col-3 profileFriends">
+              <div className="flex-row justify-content-center">
+                <h1 className="welcome">Friends</h1>
+              </div>
+              <Friends user={profileData}/>
+            </div>
+          </div>
         </div>
       )}
     </Container>

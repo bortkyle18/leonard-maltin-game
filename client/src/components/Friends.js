@@ -63,30 +63,33 @@ const Friends = (props) => {
     <>
       {friendList.map((friend) => {
         return (
-          <Card key={friend._id}>
-            {friendList.length > 0 && (
-              <>
-                <Link to={`../Profile/${friend.username}`}>
-                  <Card.Title>{friend.username}</Card.Title>
-                </Link>
-                <Button
-                  className="btn-block"
-                  variant="danger"
-                  onClick={() => handleRemoveFriend(friend._id)}
-                  >
-                    Remove Friend
-                </Button>
-              </>
-            )}
-          
-            {removeFriendMessage.msg.length > 0 && (
-              <Alert
-                variant={removeFriendMessage.type}
-                style={{ marginTop: "2em" }}
-              >
-                {removeFriendMessage.msg}
-              </Alert>
-            )}
+          <Card key={friend._id} className="cardStack flex-row justify-content-center">
+            <div className='flex-row justify-content-center categoryCard text-center'>
+              {friendList.length > 0 && (
+                <>
+                  <Link to={`../Profile/${friend.username}`}  className='friendFound'>
+                    <Card.Title>{friend.username}</Card.Title>
+                  </Link>
+                  <Button
+                    className="btn-block"
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleRemoveFriend(friend._id)}
+                    >
+                      Remove Friend
+                  </Button>
+                </>
+              )}
+            
+              {removeFriendMessage.msg.length > 0 && (
+                <Alert
+                  variant={removeFriendMessage.type}
+                  style={{ marginTop: "2em" }}
+                >
+                  {removeFriendMessage.msg}
+                </Alert>
+              )}
+            </div>
           </Card>
         )
       })}
@@ -104,7 +107,10 @@ const Friends = (props) => {
         />
 
         <Button type="submit" size="lg"
-          disabled={!friendSearch}>
+          disabled={!friendSearch}
+          className="btn-block"
+          id="success-btn"
+          variant="none">
           Find Friend
         </Button>
         
@@ -119,19 +125,22 @@ const Friends = (props) => {
       </Form>
 
       {friendData.username && (
-        <Card>
-          <Card.Title>Friend List</Card.Title>
-          <Link to={`/Profile/${friendData.username}`}>
-            <Card.Title>{friendData.username}</Card.Title>
-          </Link>
-          <Button
-            className="btn-block"
-            id="success-btn"
-            variant="none"
-            onClick={() => handleAddFriend(friendData)}
-            >
-              Add Friend
-          </Button>
+        <Card className="cardStack flex-row justify-content-center">
+          <div className='flex-row justify-content-center categoryCard text-center'>
+            <Link to={`/Profile/${friendData.username}`} className='friendFound'>
+              <Card.Title>{friendData.username}</Card.Title>
+            </Link>
+          </div>
+          <div className='flex-row justify-content-center text-center'>
+            <Button
+              className="btn-block"
+              id="success-btn"
+              variant='none'
+              onClick={() => handleAddFriend(friendData)}
+              >
+                Add Friend
+            </Button>
+          </div>
         </Card>
       )}
     </>

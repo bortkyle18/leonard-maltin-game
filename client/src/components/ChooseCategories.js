@@ -80,10 +80,11 @@ const ChooseCategories = (props) => {
         <Accordion.Item eventKey="0">
           <Accordion.Header>Public Categories</Accordion.Header>
           <Accordion.Body className="divScroll">
+          <div className="flex-row align-items-center justify-space-around text-center">
             {publicData.categories.map((category) => {
               return (
-                <Card key={category._id}>
-                  <Card.Body className="text-center">
+                <Card key={category._id} className="cardStack">
+                  <Card.Body className="categoryCard text-center">
                     <Card.Title>{category.title} ({category.movies.length})</Card.Title>
                     <Card.Text>{category.description}</Card.Text>
                     {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
@@ -107,16 +108,18 @@ const ChooseCategories = (props) => {
                 </Card>
               );
             })}
+            </div>
           </Accordion.Body>
         </Accordion.Item>
         {auth.loggedIn() && profileData && (
           <Accordion.Item eventKey="1">
             <Accordion.Header>{profileData.username}'s Categories</Accordion.Header>
             <Accordion.Body className="divScroll">
+            <div className="flex-row align-items-center justify-space-around text-center">
               {profileData.categories.map((category) => {
                 return (
-                  <Card key={category._id}>
-                    <Card.Body className="text-center">
+                  <Card key={category._id} className="cardStack">
+                    <Card.Body className="categoryCard text-center">
                       <Card.Title>{category.title} ({category.movies.length})</Card.Title>
                       <Card.Text>{category.description}</Card.Text>
                       {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
@@ -140,6 +143,7 @@ const ChooseCategories = (props) => {
                   </Card>
                 );
               })}
+              </div>
             </Accordion.Body>
           </Accordion.Item>
         )}
@@ -149,10 +153,11 @@ const ChooseCategories = (props) => {
               <Accordion.Item eventKey={friend._id} key={friend._id}>
                 <Accordion.Header>{friend.username}'s Categories</Accordion.Header>
                 <Accordion.Body className="divScroll">
+                <div className="flex-row align-items-center justify-space-around text-center">
                   {friend.categories.map((category) => {
                     return (
-                      <Card key={category._id}>
-                        <Card.Body className="text-center">
+                      <Card key={category._id} className="cardStack">
+                        <Card.Body className="categoryCard text-center">
                           <Card.Title>{category.title} ({category.movies.length})</Card.Title>
                           <Card.Text>{category.description}</Card.Text>
                           {props.gameCategories.filter((categories) => categories._id === category._id) < 1 ? (
@@ -176,6 +181,7 @@ const ChooseCategories = (props) => {
                       </Card>
                     );
                   })}
+                </div>
                 </Accordion.Body>
               </Accordion.Item>
             )}
@@ -183,7 +189,7 @@ const ChooseCategories = (props) => {
         )}
       </Accordion>
       <br/>
-      <div className="flex-row align-items-center justify-space-around text-center">
+      {/* <div className="flex-row align-items-center justify-space-around text-center">
         {
           props.gameCategories.map((category) => {
           return (
@@ -204,7 +210,7 @@ const ChooseCategories = (props) => {
             </Card>
           )
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

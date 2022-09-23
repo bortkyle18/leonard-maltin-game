@@ -1003,7 +1003,8 @@ nav a:hover {
 }
 
 .categoryCard {
-  max-width: 12rem;
+  max-width: 14rem;
+  font-size: 1.65rem;
   text-decoration: none;
   color: #116466;
 }
@@ -1053,7 +1054,7 @@ nav a:hover {
 
 .playerCard {
   border-radius: var(--border-radius);
-  background-color: #3C1F41;
+  background-color: #3C1F41
 }
 
 .gameSetUp {
@@ -1097,13 +1098,55 @@ nav a:hover {
   box-shadow: none;
 }
 
+.createCategory {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+}
+
+.createCategoryForm {
+  margin: 1rem;
+}
+
+.addedMovieCard {
+  text-decoration: none;
+  margin: 2rem;
+  max-width: 15rem;
+  color: #116466;
+}
+
+.addMovieBody {
+  background-color: #3C1F41;
+}
+
+.friendFound {
+  text-decoration: none;
+  margin: 1rem;
+  padding: .5rem 0;
+}
+
+.friendFound:hover {
+  color: #3C1F41;
+  border: 1px solid #3C1F41;
+  border-radius: 1rem;
+  padding: .5rem;
+}
+
+.profileCategories {
+  border-right: 6px solid #3C1F41;;
+}
+
+.profileFriends {
+  margin: 0 1rem;
+  padding: 0 1rem;
+}
+
+.scoreSize {
+  font-size: 3.5rem;
+}
+
 /* col-sm */
 @media screen and (min-width: 640px) {
-  .body {
-    background-size: cover;
-    background-position-x: 0;
-  }
-
   .col-sm-auto {
     flex-grow: 1;
     flex-basis: 0;
@@ -1291,6 +1334,11 @@ nav a:hover {
 
 /* col-lg */
 @media screen and (min-width: 992px) {
+  .body {
+    background-size: cover;
+    background-position-x: 0;
+  }
+
   nav {
     width: auto;
     justify-content: flex-end;

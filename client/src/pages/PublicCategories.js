@@ -34,7 +34,7 @@ const PublicCategories = (props) => {
       <div className="flex-row justify-content-center">
         {publicData.categories.map((category) => {
           return (
-            <Card key={category._id} className="cardStack">
+            <Card key={category._id} className="cardStack flex-row">
               <Link to={`../../Category/${category.id}`} className="categoryCard text-center">
                 <Card.Header>{category.title} ({category.movies.length})</Card.Header>
                 <Card.Body>

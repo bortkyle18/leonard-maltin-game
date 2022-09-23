@@ -51,7 +51,7 @@ const Scoreboard = (props) => {
                 )}
                 <Card.Title>{player.player}</Card.Title>
                 <div className="flex-row justify-content-center align-items-center scoreCard">
-                  <Card.Title>{player.score}</Card.Title>
+                  <div className="scoreSize">{player.score}</div>
                   <div>
                     <div>
                     <Button variant="none" size="sm" onClick={() => addToScore(player)}>🔼</Button>
