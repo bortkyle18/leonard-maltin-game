@@ -82,12 +82,20 @@ const EditCategory = (props) => {
             `https://imdb-api.com/en/API/Title/k_3fj95i3b/${foundMovie.id}/Posters,Images,Trailer,Ratings`
           );
 
+          const reviewDataResponse = await fetch(
+            `https://imdb-api.com/en/API/MetacriticReviews/k_3fj95i3b/${foundMovie.id}`
+          )
+          
+
           if (!dataResponse.ok) {
             throw new Error("something went wrong!");
           }
 
           const movieData = await dataResponse.json();
-          const movieDataFound = {...movieData, actorList: (movieData.actorList.slice(0,12).reverse())};
+          const reviewData = await reviewDataResponse.json();
+          console.log(reviewData)
+          const movieDataFound = {...reviewData, ...movieData, actorList: (movieData.actorList.slice(0,12).reverse())};
+          console.log(movieDataFound)
 
           if (movieDataFound.type === "Movie") {
             setMoviesFound(moviesFound => [...moviesFound, movieDataFound])
@@ -97,10 +105,10 @@ const EditCategory = (props) => {
 
       findMovies(results)
       setMovieSearchInput("");
+      setLoadingMessage("")
     } catch (err) {
       console.error(err);
     }
-    setLoadingMessage("")
   };
 
   const handleSaveMovieToCategory = async (movie) => {
@@ -109,6 +117,7 @@ const EditCategory = (props) => {
       title: movie.title,
       year: movie.year,
       image: movie.image,
+      reviews: movie.items,
       runtimeStr: movie.runtimeStr,
       contentRating: movie.contentRating,
       actorList: movie.actorList,
