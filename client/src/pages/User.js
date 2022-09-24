@@ -64,7 +64,7 @@ const User = (props) => {
     return (
       <>
         <BasicNav authUser={ props.authUser }/>
-        <p>Loading... Come on HAL!</p>
+        <p>Loading... Open the pod bay doors, please, HAL.</p>
       </>
     )
   }

@@ -57,7 +57,7 @@ const EditCategory = (props) => {
     setMoviesFound([])
     setSaveMessage({type: "", msg: ""})
 
-    setLoadingMessage("Loading... Come on Hal!")
+    setLoadingMessage("Loading... Open the pod bay doors, please, HAL.")
 
     // Don't allow blank input search
     if (!movieSearchInput) {
@@ -155,7 +155,7 @@ const EditCategory = (props) => {
     if (saveCategoryResult.result === "success") {
       setSaveMessage({
         type: "success",
-        msg: "Fun Success Quote Here"
+        msg: "Category Successfully Saved. If you build it, they will come. - Field of Dreams (1989)"
       });
     } else {
       setSaveMessage({

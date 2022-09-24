@@ -21,7 +21,7 @@ const PublicCategories = (props) => {
 
   if (!publicData) {
     return (
-      <p>Loading... Come on HAL!</p>
+      <p>Loading... Open the pod bay doors, please, HAL.</p>
     )
   }
 

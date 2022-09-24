@@ -3,20 +3,71 @@ import Form from 'react-bootstrap/Form';
 import { Card, Button } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Blank from '../assets/images/Blank.png'
+
+import Batman from '../assets/images/Batman.png'
+import BeatleJuice from '../assets/images/BeatleJuice.png'
+import BigL from '../assets/images/BigL.png'
+import BreakfastTiff from '../assets/images/BreakfastTiff.png'
+import CharlieChoc from '../assets/images/CharlieChoc.png'
+import CTHD from '../assets/images/CTHD.png'
+import DevilWears from '../assets/images/DevilWears.png'
+import ESOSM from '../assets/images/ESOSM.png'
 import FightClub from '../assets/images/FightClub.png'
-import SpaceOd from '../assets/images/SpaceOd.png'
+import HarryPotter from '../assets/images/HarryPotter.png'
+import JamesBond from '../assets/images/JamesBond.png'
 import KillBill from '../assets/images/KillBill.png'
+import KKid from '../assets/images/KKid.png'
+import LegallyBlonde from '../assets/images/LegallyBlonde.png'
 import LOTR from '../assets/images/LOTR.png'
+import LOTRGand from '../assets/images/LOTRGand.png'
+import LOTRSar from '../assets/images/LOTRSar.png'
+import LWAW from '../assets/images/LWAW.png'
+import Matrix from '../assets/images/Matrix.png'
+import MeanGirls from '../assets/images/MeanGirls.png'
+import OneFlewOver from '../assets/images/OneFlewOver.png'
+import PulpF from '../assets/images/PulpF.png'
+import RememberT from '../assets/images/RememberT.png'
+import ShawS from '../assets/images/ShawS.png'
+import SpaceOd from '../assets/images/SpaceOd.png'
+import StarWars from '../assets/images/StarWars.png'
+import VforVen from '../assets/images/VforVen.png'
+import WizOz from '../assets/images/WizOz.png'
+import Zoolander from '../assets/images/Zoolander.png'
 
 const Players = (props) => {
   const [ playerInput, setPlayerInput ] = useState("")
   const [ imageInput, setImageInput ] = useState({value: "", image: Blank})
 
   const movieImages = [
+    { value: 'Batman', image: Batman },
+    { value:'BeatleJuice', image: BeatleJuice },
+    { value: 'BigL', image: BigL },
+    { value: 'BreakfastTiff', image: BreakfastTiff },
+    { value: 'CharlieChoc', image: CharlieChoc },
+    { value: 'CTHD', image: CTHD },
+    { value: 'DevilWears', image: DevilWears },
+    { value: 'ESOSM', image: ESOSM },
     { value: 'FightClub', image: FightClub },
-    { value:'SpaceOd', image: SpaceOd },
+    { value: 'HarryPotter', image: HarryPotter },
+    { value: 'JamesBond', image: JamesBond },
     { value: 'KillBill', image: KillBill },
-    { value: 'LOTR', image: LOTR }
+    { value: 'KKid', image: KKid },
+    { value: 'LegallyBlonde', image: LegallyBlonde },
+    { value: 'LOTR', image: LOTR },
+    { value: 'LOTRGand', image: LOTRGand },
+    { value: 'LOTRSar', image: LOTRSar },
+    { value: 'LWAW', image: LWAW },
+    { value: 'Matrix', image: Matrix },
+    { value: 'MeanGirls', image: MeanGirls },
+    { value: 'OneFlewOver', image: OneFlewOver },
+    { value: 'PulpF', image: PulpF },
+    { value: 'RememberT', image: RememberT },
+    { value: 'ShawS', image: ShawS },
+    { value: 'SpaceOd', image: SpaceOd },
+    { value: 'StarWars', image: StarWars },
+    { value: 'LOVforVenTR', image: VforVen },
+    { value: 'WizOz', image: WizOz },
+    { value: 'Zoolander', image: Zoolander }
   ];
 
   const handleSavePlayer = async (e) => {

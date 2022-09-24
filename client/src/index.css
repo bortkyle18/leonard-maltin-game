@@ -35,10 +35,10 @@ body {
 .body {
   background-color: black;
   background-image: url("./assets/images/Film\ and\ Theater\ Presentation.png");
-  background-size: 100rem;
-  background-position-x: -15rem;
+  background-size: 100%;
   color: white;
 }
+
 
 h1,
 h2,
@@ -1388,7 +1388,7 @@ nav a:hover {
     display: flex;
     flex-wrap: wrap;
     min-width: 40rem;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .signInUpForm {
@@ -1486,11 +1486,6 @@ nav a:hover {
 
 /* col-lg */
 @media screen and (min-width: 992px) {
-  .body {
-    background-size: cover;
-    background-position-x: 0;
-  }
-
   nav {
     width: auto;
     justify-content: flex-end;
