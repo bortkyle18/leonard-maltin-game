@@ -46,14 +46,14 @@ const Movie = (props) => {
                       <div className="flex-row">
                         {movie.imDbRating > 7.5 ? (
                           <p>IMDb: <span className="goodMovie">{movie.imDbRating}</span></p>
-                        ) : (movie.imDbRating < 7.5 && movie.imDbRating > 4.5? (
+                        ) : (movie.imDbRating > 4.5? (
                           <p>IMDb: <span className="okayMovie">{movie.imDbRating}</span></p>
                         ): (
                           <p>IMDb: <span className="badMovie">{movie.imDbRating}</span></p>
                         ))}
                         {movie.metacriticRating != null && movie.metacriticRating > 75 ? (
                           <p>Metacritic: <span className="goodMovie">{movie.metacriticRating}</span></p>
-                        ) : (movie.metacriticRating != null && movie.metacriticRating < 75 && movie.metacriticRating > 45 ? (
+                        ) : (movie.metacriticRating != null && movie.metacriticRating > 45 ? (
                           <p>Metacritic: <span className="okayMovie">{movie.metacriticRating}</span></p>
                         ): (movie.metacriticRating != null && (
                           <p>Metacritic: <span className="badMovie">{movie.metacriticRating}</span></p>
@@ -133,7 +133,7 @@ const Movie = (props) => {
                                       <div className="flex-row justify-content-center">
                                       {review.rate != null && review.rate  > 75 ? (
                                         <p className="goodMovie">{review.rate }</p>
-                                      ) : (review.rate  != null && review.rate  < 75 && review.rate  > 45 ? (
+                                      ) : (review.rate  != null && review.rate  > 45 ? (
                                         <p className="okayMovie">{review.rate }</p>
                                       ): (review.rate  != null && (
                                         <p className="badMovie">{review.rate }</p>
